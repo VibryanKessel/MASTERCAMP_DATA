@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "App back-end ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VibryanKessel/MASTERCAMP_DATA.git"
+  },
+  "author": "_ZERO_",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VibryanKessel/MASTERCAMP_DATA/issues"
+  },
+  "homepage": "https://github.com/VibryanKessel/MASTERCAMP_DATA#readme"
+}
