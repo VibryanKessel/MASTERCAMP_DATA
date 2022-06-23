@@ -1,11 +1,11 @@
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Register from './src/components/Register';
+import Login from './src/components/Login';
 
 const App = () => {
   return (
-    <Register/>
+    <Login/>
   );
 }
 
