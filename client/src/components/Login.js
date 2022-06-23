@@ -1,9 +1,33 @@
 
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native"
 import tw from "twrnc"
 
+
 export default () => {
+    const [email,setEmail] = useState("");
+    const [pwd,setPwd] = useState("");
+    const [msg,setMsg] = useState({
+        text : null,
+        err : true
+    })
+    const logIn = async () => {
+        if ( email === "" || pwd === ""){
+            setMsg({text : "Veuillez remplir tous les champs !",err : true});
+        }else{
+            console.log(pwd)
+                const response = await axios.post("http://localhost:5000/login", 
+                {email: email, mdp: pwd})
+                console.log(response)
+                if(response.status === 200){
+                    setMsg({text : "Vous etes connecté(e)",err :false})
+                }else{
+                    setMsg({text :"User introuvable !",err : true})
+                }
+        }
+        console.log(msg)
+    }
     
     return( 
     <View style = {tw`flex flex-row m-0 h-full w-full`}>
@@ -20,13 +44,24 @@ export default () => {
                         <Text style = {tw`text-lg text-left`}>
                             Email
                         </Text>
-                        <TextInput placeholder="Enter your Email" style = {tw`border-2 text-md h-10 rounded `}/>
+                        <TextInput 
+                            value= { email }
+                            onChangeText = { text => setEmail(text) }
+                            placeholder="Enter your Email" 
+                            style = {tw`border-2 text-md h-10 rounded `}
+                        />
                     </View>
                     <View style = {tw`py-5`}>
                         <Text style = {tw`text-lg text-left`}>
                             Password
                         </Text>
-                        <TextInput secureTextEntry = { true } placeholder="Enter your Password" style = {tw`border-2 text-md h-10 rounded `}/>
+                        <TextInput 
+                            value= { pwd }
+                            onChangeText = { text => setPwd(text) }
+                            secureTextEntry = { true } 
+                            placeholder="Enter your Password" 
+                            style = {tw`border-2 text-md h-10 rounded `}
+                            />
                     </View>
                     
                     <TouchableOpacity style = {tw`py-5 `}>
@@ -35,13 +70,18 @@ export default () => {
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
-                        onPress={() => {}}
+                        onPress={() => { logIn() }}
                         style = {tw`shadow-lg shadow-gray-500/50 border-2 border-orange-500 bg-orange-500 font-black h-10 rounded`}
                     >
                         <Text style = { tw` text-gray-100 text-xl text-center font-bold`}>
                             SIGN IN
                         </Text>
                     </TouchableOpacity>
+                                <Text
+                                style = { (msg.err)? {color : 'red'}:{color : 'green'}}
+                                >
+                                    {msg.text}
+                                </Text>
                     <View style = {tw`flex flex-row py-5 self-center`}>
                         <Text>
                             Don't yet have an account ?

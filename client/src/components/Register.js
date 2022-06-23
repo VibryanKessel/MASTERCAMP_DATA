@@ -4,13 +4,43 @@ import { IconButton } from "react-native-paper";
 import DatePicker from 'react-native-modern-datepicker';
 
 import tw from "twrnc"
+import axios from "axios";
 
 const bgImage = require("../../assets/logo.jpeg")
 export default () => {
+    
+    const [firstName,setFirstName] = useState("")
+    const [lastName,setLastName] = useState("")
+    const [birthDate,setBirthDate] = useState("")
+    const [email,setEmail] = useState("")
+    const [pwd,setPwd] = useState("")
+    const [cfPwd,setCfPwd] = useState("")
+    const [msg,setMsg] = useState("")
+
     const [pwdHidden,setPwdVisibility] = useState(true)
     const [cfPwdHidden,setCfPwdVisibility] = useState(true)
     const [dateInputHidden,setDateInputVisibility] = useState(true)
-    const [birthDate,setBirthDate] = useState("")
+    
+    const signUp = async () => {
+        if ( email === "" || lastName === "" || firstName === "" || pwd === "" ){
+            setMsg({text : "Veuillez remplir tous les champs !",err : true});
+        }else{
+            console.log(pwd)
+                const response = await axios.post("http://localhost:5000/register", 
+                {
+                    email: email, 
+                    mdp: pwd, 
+                    birthDate: birthDate, 
+                    nom: lastName
+                })
+                console.log(response)
+                if(response.status === 200){
+                    setMsg({text : "Votre compte a été créé", err :false})
+                }else{
+                    setMsg({text :"Erreur création de compte", err : true})
+                }
+        }
+    }
     
     return(
             <View style = { tw`h-full`}>
@@ -43,13 +73,25 @@ export default () => {
                             <Text style = {tw`text-lg text-left`}>
                                 Last Name
                             </Text>
-                            <TextInput placeholder="Enter your last name" style = {tw`border-2 text-md h-10 rounded `}/>
+                            <TextInput 
+                                value = { lastName }
+                                onChangeText = { text => setLastName(text) }    
+                                placeholder="Enter your last name" 
+                                style = {tw`border-2 text-md h-10 rounded `}
+                            />
                         </View>
                         <View style = {tw`py-1`}>
-                            <Text style = {tw`text-lg text-left`}>
+                            <Text 
+                                style = {tw`text-lg text-left`}
+                                >
                                 First Name
                             </Text>
-                            <TextInput placeholder="Enter your first name" style = {tw`border-2 text-md h-10 rounded `}/>
+                            <TextInput 
+                                value = { firstName }
+                                onChangeText = { text => setFirstName(text) }
+                                placeholder="Enter your first name" 
+                                style = {tw`border-2 text-md h-10 rounded `}
+                            />
                         </View>
                         <View style = {tw`py-1`}>
                             <Text style = {tw`text-lg text-left`}>
@@ -74,7 +116,12 @@ export default () => {
                                     <Text style = {tw`text-lg text-left`}>
                                         Email
                                     </Text>
-                                    <TextInput placeholder="Enter your Email" style = {tw`border-2 text-md h-10 rounded `}/>
+                                    <TextInput 
+                                        value = { email }
+                                        onChangeText = { text => setEmail(text) }                                    
+                                        placeholder="Enter your Email" 
+                                        style = {tw`border-2 text-md h-10 rounded `}
+                                    />
                                 </View>
                                 <View style = {tw`py-1`}>
                                     <Text style = {tw`text-lg text-left`}>
@@ -82,6 +129,8 @@ export default () => {
                                     </Text>
                                     <View style = { tw`flex flex-row` }>
                                         <TextInput 
+                                            value = { pwd }
+                                            onChangeText = { text => setPwd(text) }
                                             secureTextEntry = { pwdHidden } 
                                             placeholder="Enter your Password" 
                                             style = {tw`border-2 text-md h-10 w-full rounded `}
@@ -96,7 +145,9 @@ export default () => {
                                             Confirm Password
                                         </Text>
                                         <View style = { tw`flex flex-row` }>
-                                            <TextInput 
+                                            <TextInput
+                                                value = { cfPwd }
+                                                onChangeText = { text => setCfPwd(text) } 
                                                 secureTextEntry = { cfPwdHidden } 
                                                 placeholder="Confirm your Password" 
                                                 style = {tw`border-2 text-md h-10 w-full rounded `}
@@ -118,7 +169,7 @@ export default () => {
                         </View>
                         
                         <TouchableOpacity 
-                            onPress={() => {}}
+                            onPress={() => signUp()}
                             style = {tw`shadow-lg shadow-gray-500/50 border-2 border-orange-500 bg-orange-500 font-black h-10 rounded`}
                             >
                             <Text style = { tw` text-gray-100 text-xl text-center font-bold`}>

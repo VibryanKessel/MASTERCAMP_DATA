@@ -23,7 +23,7 @@ const registerRouter=(con)=>{
             {
 
                 con.query("INSERT INTO Client(`nom`, `email`, `motDePasse`, `dateNaissance`) VALUES (?,?,?,?)",[
-                    body.nom,body.email,body.mdp,body.dateNaissance
+                    body.nom,body.email,body.mdp,body.birthDate
                 ], (err, results) => {
                     if (err) throw err;
                     res.status(200).json({
