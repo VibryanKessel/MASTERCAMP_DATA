@@ -33,9 +33,7 @@ const con=mySql.createConnection({
     databases: BDD_NAME    
 });
 con.connect();
-con.query("USE "+ BDD_NAME, (err, results) => {
-    console.log(err)
-});
+con.query("USE "+ BDD_NAME, (err, results) => {if (err) throw err});
 
 
 // Configuration des routes //
