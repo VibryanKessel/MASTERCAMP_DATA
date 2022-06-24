@@ -1,27 +1,35 @@
 
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { useDispatch, useSelector } from "react-redux";
 import tw from "twrnc"
 
 
 export default () => {
+    const navigation = useNavigation();
     const [email,setEmail] = useState("");
     const [pwd,setPwd] = useState("");
     const [msg,setMsg] = useState({
         text : null,
         err : true
     })
+    const dispatch = useDispatch()
+
     const logIn = async () => {
         if ( email === "" || pwd === ""){
             setMsg({text : "Veuillez remplir tous les champs !",err : true});
         }else{
-            console.log(pwd)
+                const user = {email: email, mdp: pwd}
                 const response = await axios.post("http://localhost:5000/login", 
-                {email: email, mdp: pwd})
+                user)
                 console.log(response)
                 if(response.status === 200){
                     setMsg({text : "Vous etes connecté(e)",err :false})
+                    setTimeout(
+                        dispatch( {type:"LOGIN",user:user} ),5000            
+                    )
                 }else{
                     setMsg({text :"User introuvable !",err : true})
                 }
@@ -87,7 +95,7 @@ export default () => {
                             Don't yet have an account ?
                         </Text>
                         <TouchableOpacity 
-                            onPress={() => {}}
+                            onPress={() => { navigation.navigate('Sign Up') }}
                             style = { tw`px-2` }
                         >
                             <Text style = {tw`font-bold underline text-indigo-500 `}>
