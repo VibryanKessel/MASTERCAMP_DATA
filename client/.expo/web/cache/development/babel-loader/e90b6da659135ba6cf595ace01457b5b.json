@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default (function () {\n  return;\n});","map":{"version":3,"names":[],"sources":["/home/zero/GIT/MASTERCAMP_DATA/client/src/screens/SettingsScreen.js"],"sourcesContent":["export default () => {\n    return\n}"],"mappings":"AAAA,gBAAe,YAAM;EACjB;AACH,CAFD"},"metadata":{},"sourceType":"module"}

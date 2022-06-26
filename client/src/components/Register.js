@@ -5,10 +5,11 @@ import DatePicker from 'react-native-modern-datepicker';
 
 import tw from "twrnc"
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
 const bgImage = require("../../assets/logo.jpeg")
 export default () => {
-    
+    const navigation = useNavigation();
     const [firstName,setFirstName] = useState("")
     const [lastName,setLastName] = useState("")
     const [birthDate,setBirthDate] = useState("")
@@ -16,7 +17,7 @@ export default () => {
     const [pwd,setPwd] = useState("")
     const [cfPwd,setCfPwd] = useState("")
     const [msg,setMsg] = useState("")
-
+    
     const [pwdHidden,setPwdVisibility] = useState(true)
     const [cfPwdHidden,setCfPwdVisibility] = useState(true)
     const [dateInputHidden,setDateInputVisibility] = useState(true)
@@ -59,7 +60,7 @@ export default () => {
                                 Already have an account ?
                             </Text>
                             <TouchableOpacity 
-                                onPress={() => {}}
+                                onPress={() => { navigation.navigate('Sign In') }}
                                 style = { tw`px-2` }
                                 >
                                 <Text style = {tw`font-bold underline text-indigo-500 `}>
