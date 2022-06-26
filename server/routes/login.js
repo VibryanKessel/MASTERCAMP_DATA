@@ -12,7 +12,10 @@ const loginRouter=(con)=>{
             body.email,
             body.mdp
         ], (err, results) => {
-            if(err) throw err;
+            if(err) {
+                res.status(500).json({"message":"Internal server error"});
+                throw err;
+            };
             
             if (results.length == 0)
                 res.status(404).json({

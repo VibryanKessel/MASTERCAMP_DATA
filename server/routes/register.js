@@ -12,7 +12,10 @@ const registerRouter=(con)=>{
         con.query("SELECT id FROM Client WHERE email = ? ",[
             body.email
         ], (err, results) => {
-            if(err) throw err;
+            if(err) {
+                res.status(500).json({"message":"Internal server error"});
+                throw err;
+            };
 
             if (results.length != 0)
 

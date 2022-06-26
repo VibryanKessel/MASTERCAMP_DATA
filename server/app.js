@@ -4,6 +4,7 @@ const cors = require('cors');
 const mySql = require('mysql');
 
 // Utils//
+
 const BDD_NAME = "mastercamp"
 const FRONT_URL = ""
 const AI_SERVER_URL = ""
@@ -11,6 +12,8 @@ const AI_SERVER_URL = ""
 //Routes//
 const loginRouter=require('./routes/login');
 const registerRouter=require('./routes/register');
+const monitoringRouter=require('./routes/dietMonitoring');
+const recommandationRouter=require('./routes/recommandation');
 
 // Création serveur //
 const app=express();
@@ -29,16 +32,21 @@ const con=mySql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    port:'8080',
+    port:'3306',
     databases: BDD_NAME    
 });
 con.connect();
-con.query("USE "+ BDD_NAME, (err, results) => {if (err) throw err});
-
-
+con.query("USE "+ BDD_NAME, (err, results) => {
+    if(err) {
+        res.status(500).json({"message":"Internal server error"});
+        throw err;
+    };
+});
 // Configuration des routes //
 app.use('/login',loginRouter(con));
 app.use('/register',registerRouter(con));
+app.use('/dietMonitoring',monitoringRouter(con));
+app.use('/recommandation',recommandationRouter(con));
 
 app.get('/deconnexion',(req,res)=>{
     console.log(`${req.session.user.nom} vient de se deconnecter`);
