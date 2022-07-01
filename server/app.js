@@ -33,9 +33,9 @@ app.use(express.urlencoded({ extended: false }))
 // Connection base de donnéees //
 const con=mySql.createConnection({
     host:'localhost',
-    user:'root',
-    password:'',
-    port:'8080',
+    user:MYSQL_USER,
+    password:MYSQL_PASSWORD,
+    port: MYSQL_PORT,
     databases: BDD_NAME    
 });
 con.connect();
