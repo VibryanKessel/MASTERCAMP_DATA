@@ -13,28 +13,20 @@ export default () => {
     const logOut = () => dispatch({ type:"LOGOUT"})
     const [selectedCategory, setCategory] = useState();
     const Topcategories = [
-        "Breavet",
-        "Liclangue",
-        "Preaquat",
-        "Ibburine",
-        "Eolo",
-        "Guarana Monstrueux",
-        "Abricot Aigre",
-        "Ail Oriental",
-        "Clémentine D'Orage",
-        "Tamarin Tranquille"
-        ]
-    const categories = [
-        "Breavet",
-        "Liclangue",
-        "Preaquat",
-        "Ibburine",
-        "Eolo",
-        "Guarana Monstrueux",
-        "Abricot Aigre",
-        "Ail Oriental",
-        "Clémentine D'Orage",
-        "Tamarin Tranquille"
+        "Cuisine algérienne",
+        "Cuisine italienne",
+        "Vegan",
+        "Viandes",
+        "Cuisine japonaise",
+        "Curry",
+    ]
+    const trendyMeals = [
+        "Pommes au four",
+        "Petit salé aux lentilles",
+        " Tarte aux fraises facile",
+        "Croque-monsieur",
+        "Aïoli",
+        "Oeufs mimosa",
     ]
     return <View>
         <View style = { tw`mx-5 self-center` }>
@@ -61,7 +53,7 @@ export default () => {
                         setCategory(itemValue)
                     }>
                     {
-                        categories.map(
+                        Topcategories.map(
                             (el,idx) => {
                                 return <Picker.Item
                                 key = {idx} 
@@ -103,7 +95,7 @@ export default () => {
                     TRENDY MEALS
                 </Text>
             </View>
-            <Carousel content = { categories }/>
+            <Carousel content = { trendyMeals }/>
         </View>
         <Footer/>
     </View>

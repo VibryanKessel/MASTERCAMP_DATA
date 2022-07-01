@@ -24,8 +24,8 @@ export default () => {
     const [cfPwdHidden,setCfPwdVisibility] = useState(true)
     const [dateInputHidden,setDateInputVisibility] = useState(true)
     const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    const numReg = /\d/g
-    const letterReg = /[a-zA-Z]/
+    const numReg = /\d/g;
+    const letterReg = /[a-zA-Z]/;
 
     const signUp = async () => {
         if ( email === "" || lastName === "" || firstName === "" || pwd === "" ){
@@ -44,7 +44,7 @@ export default () => {
             setMsg({text : "Le mot de passe n'est pas valide (au moins 8 caracteres, au moins 1 chiffre et une lettre)",err : true});
             return ;
         }
-        const response = await axios.post("http://localhost:5000/register", 
+        const response = await axios.post("http://localhost:5000/register",  // On contacte le serveur qui tourne sur le port 5000 pour l'enregistrement client
         {
             email: email, 
             mdp: pwd, 
