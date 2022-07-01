@@ -3,13 +3,10 @@ const dataProcessing = {
         {
             var ingredients;
             var p = new Promise((resolve,reject)=>{
-                con.query("SELECT * FROM Ingredients ", (err, results) => {
+                con.query("SELECT * FROM Ingredients ", (err) => {
                     if(err) {
-                        res.status(500).json({"message":"Internal server error"});
                         reject(err);
                     };
-    
-                    resolve(results);
                 });
             })
 

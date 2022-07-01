@@ -32,13 +32,12 @@ const con=mySql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    port:'3306',
+    port:'8080',
     databases: BDD_NAME    
 });
 con.connect();
-con.query("USE "+ BDD_NAME, (err, results) => {
+con.query("USE "+ BDD_NAME, (err) => {
     if(err) {
-        res.status(500).json({"message":"Internal server error"});
         throw err;
     };
 });

@@ -19,14 +19,14 @@ export default () => {
         (session === null)? 
         (
             <Stack.Navigator screenOptions={{ headerShown: false}}>
-            <Stack.Screen name="Sign In" component={Login} />
-            <Stack.Screen name="Sign Up" component={Register} />
+                <Stack.Screen name="Sign In" component={Login} />
+                <Stack.Screen name="Sign Up" component={Register} />
             </Stack.Navigator>
         ):
         (
             <Tab.Navigator screenOptions={{ headerShown: false}}>
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+                <Tab.Screen name="Home" component={HomeScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
             </Tab.Navigator>
         )
     }  

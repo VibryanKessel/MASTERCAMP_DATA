@@ -72,8 +72,8 @@ export default () => {
                             />
                     </View>
                     
-                    <TouchableOpacity style = {tw`py-5 `}>
-                        <Text style = {tw`font-bold text-right text-indigo-500 `}>
+                    <TouchableOpacity style = {tw`py-5`}>
+                        <Text style = {tw`font-bold absolute right-0 text-indigo-500 `}>
                             Forgot password
                         </Text>
                     </TouchableOpacity>

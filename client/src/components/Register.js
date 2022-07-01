@@ -16,30 +16,48 @@ export default () => {
     const [email,setEmail] = useState("")
     const [pwd,setPwd] = useState("")
     const [cfPwd,setCfPwd] = useState("")
-    const [msg,setMsg] = useState("")
-    
+    const [msg,setMsg] = useState({
+        text : null,
+        err : true
+    })
     const [pwdHidden,setPwdVisibility] = useState(true)
     const [cfPwdHidden,setCfPwdVisibility] = useState(true)
     const [dateInputHidden,setDateInputVisibility] = useState(true)
-    
+    const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    const numReg = /\d/g
+    const letterReg = /[a-zA-Z]/
+
     const signUp = async () => {
         if ( email === "" || lastName === "" || firstName === "" || pwd === "" ){
             setMsg({text : "Veuillez remplir tous les champs !",err : true});
+            return ;
+        }
+        if ( !emailReg.test(email) ) {            setMsg({text : "Les mots de passe ne correspondent pas",err : true});
+            setMsg({text : "Email invalide",err : true});
+            return ;
+        }
+        if ( pwd !== cfPwd ){
+            setMsg({text : "Les mots de passe ne correspondent pas",err : true});
+            return ;
+        }
+        if( pwd.length < 8 || !numReg.test(pwd) || !letterReg.test(pwd) ){
+            setMsg({text : "Le mot de passe n'est pas valide (au moins 8 caracteres, au moins 1 chiffre et une lettre)",err : true});
+            return ;
+        }
+        const response = await axios.post("http://localhost:5000/register", 
+        {
+            email: email, 
+            mdp: pwd, 
+            birthDate: birthDate, 
+            nom: lastName
+        })
+        if(response.status === 200){
+            setMsg({text : "Votre compte a été créé", err :false})
+            setTimeout(
+                navigation.navigate('Sign In'),5000
+            )
         }else{
-            console.log(pwd)
-                const response = await axios.post("http://localhost:5000/register", 
-                {
-                    email: email, 
-                    mdp: pwd, 
-                    birthDate: birthDate, 
-                    nom: lastName
-                })
-                console.log(response)
-                if(response.status === 200){
-                    setMsg({text : "Votre compte a été créé", err :false})
-                }else{
-                    setMsg({text :"Erreur création de compte", err : true})
-                }
+            setMsg({text :"Erreur création de compte", err : true})
         }
     }
     
@@ -113,6 +131,12 @@ export default () => {
                             </View>
                             {(dateInputHidden)?
                             <View>
+                                <View style = { tw`flex flex-row` }>
+                                    <Text style = {tw`text-lg text-left`}>
+                                        Intolérances
+                                    </Text>
+                                
+                                </View>
                                 <View style = {tw`py-1`}>
                                     <Text style = {tw`text-lg text-left`}>
                                         Email
@@ -178,6 +202,11 @@ export default () => {
                             </Text>
                         </TouchableOpacity>
                     </View>
+                    <Text
+                        style = { (msg.err)? {color : 'red'}:{color : 'green'}}
+                        >
+                            { msg.text }
+                    </Text>
                 </View>
             <Text style = { tw`absolute bottom-0 left-2 text-gray-500`}>
                 ©_____________2022
