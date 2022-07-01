@@ -36,9 +36,8 @@ const con=mySql.createConnection({
     databases: BDD_NAME    
 });
 con.connect();
-con.query("USE "+ BDD_NAME, (err, results) => {
+con.query("USE "+ BDD_NAME, (err) => {
     if(err) {
-        res.status(500).json({"message":"Internal server error"});
         throw err;
     };
 });
