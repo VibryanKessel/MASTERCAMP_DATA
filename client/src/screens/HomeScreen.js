@@ -4,6 +4,7 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Button, TextInput } from "react-native-paper";
 import { useDispatch } from "react-redux"
 import tw from "twrnc";
+import axios from "axios";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 
@@ -40,10 +41,10 @@ export default () => {
             <Text style = { tw` bg-gray-300 p-5 my-5 rounded-md` }>
                 Labore est laboris est veniam aliquip pariatur. Ut velit exercitation ad et. Aliqua eu aute et sit cillum quis anim occaecat nisi consectetur aliquip quis aute elit.
                 Exercitation cupidatat ea cupidatat culpa duis amet consequat. Qui elit dolor dolore aute reprehenderit incididunt. Voluptate aliqua voluptate aliqua velit ullamco incididunt consequat. Eu adipisicing cillum ipsum ex excepteur ex proident occaecat velit veniam ipsum esse officia sunt. Veniam laborum ad consequat proident nostrud adipisicing pariatur eu officia. Eu eiusmod culpa ea fugiat nisi esse nulla ut et laboris. Commodo aliqua amet aliqua ipsum reprehenderit commodo esse.
-                <Text style = { tw`font-bold text-lg` }>
-                {"\n"}Getting started with a {' '}
-                    <TouchableOpacity 
-                        style = { tw`underline text-blue-500` }
+                <Text style={tw`font-bold text-lg`}>
+                    {"\n"}Getting started with a {' '}
+                    <TouchableOpacity
+                        style={tw`underline text-blue-500`}
                     >
                         <Text>DIET</Text>
                     </TouchableOpacity>
@@ -71,20 +72,20 @@ export default () => {
                         )
                     }
                 </Picker>
-                <View style = { tw`h-7 flex flex-row w-1/2 bg-red-500` }>
+                <View style={tw`h-7 flex flex-row w-1/2 bg-red-500`}>
                     <TextInput
-                        style = { tw`h-7 text-center w-2/3` }
-                        placeholder = "Que recherchez-vous ?"
+                        style={tw`h-7 text-center w-2/3`}
+                        placeholder="Que recherchez-vous ?"
                     />
-                    <TouchableOpacity style = { tw`h-7 bg-orange-500 w-1/3` }>
-                        <Text style = { tw`font-bold text-blue-500 text-sm text-center py-1` }>
+                    <TouchableOpacity style={tw`h-7 bg-orange-500 w-1/3`}>
+                        <Text style={tw`font-bold text-blue-500 text-sm text-center py-1`}>
                             SEARCH
                         </Text>
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style = { tw`border-b-2 my-3` }>
-                <Text style = { tw`font-bold text-lg` }>
+            <View style={tw`border-b-2 my-3`}>
+                <Text style={tw`font-bold text-lg`}>
                     TOP CATEGORIES
                 </Text>
             </View>

@@ -32,7 +32,7 @@ const con=mySql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    port:'8080',
+    port:'3306',
     databases: BDD_NAME    
 });
 con.connect();
