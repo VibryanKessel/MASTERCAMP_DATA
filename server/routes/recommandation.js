@@ -10,29 +10,28 @@ const loginRouter = (con) => {
     /*----------------------------------------------------- */
 
     router.get('/', asyncHandler(async (req, res, next) => {
-        
+
         const recipes = await getRecipesFromApi(con)
         console.log(recipes)
         res.status(200).json(recipes);
-    })); 
+    }));
 
-/*---------------------------------------------------------- */
-return router;
+    /*---------------------------------------------------------- */
+    return router;
 }
 
 
 
 
-function getRecipesFromApi(con)
-{
-    return new Promise(async (resolve,reject)=>{
+function getRecipesFromApi(con) {
+    return new Promise(async (resolve, reject) => {
 
         let ingredients = await getIngredients(con);
         ingredients = categorizeIngredients(ingredients);
-        
+
         const combinaisons_ingredients = combine(ingredients); //combine sert à créer des combinaisons différentes d'ingrédients
         console.log(combinaisons_ingredients);
-        
+
         /* Pour chaque combinaison on va demander des recettes qu'elles peuvent constituer */
         let recipes = []
         for (let i = 0; i < combinaisons_ingredients.length; i++) {
@@ -45,6 +44,15 @@ function getRecipesFromApi(con)
             });
 
             recipes = recipes.concat(response.data);
+        }
+
+        for (let i = 0; i < recipes.length; i++) {
+
+            recipes[i] = {
+                "id": recipes[i].id,
+                "title": recipes[i].title,
+                "image": recipes[i].image,
+            }
         }
 
         resolve(recipes);
