@@ -51,6 +51,6 @@ Pour le login vous pourrez utiliser les ids : (email:`a@gmail.com`, motdepasse: 
 
 - BUGS : 
   - Certaines installations peuvent échouer parce que vous n'êtes pas passer en mode superutilisateur 
-  - (Bugs probables) Nous avons tous utiliser des systèmes d'exploitations UBUNTU pour le développement. Nous avons pas faits de tests sur des systèmes WINDOWS. Il est donc possible que certains bugs surviennent.
+  - (Bugs probables) Nous avons tous utiliser des systèmes d'exploitations UBUNTU pour le développement. Nous n'avons pas fait de tests sur des systèmes WINDOWS. Il est donc possible que certains bugs surviennent.
 
 
