@@ -5,8 +5,11 @@ const mySql = require('mysql');
 
 // Utils//
 
-const BDD_NAME = "mastercamp"
-const FRONT_URL = ""
+const BDD_NAME = "mastercamp";
+const MYSQL_PORT = '3306';
+const MYSQL_USER = "root";
+const MYSQL_PASSWORD = "";
+
 const AI_SERVER_URL = ""
 
 //Routes//
@@ -30,9 +33,9 @@ app.use(express.urlencoded({ extended: false }))
 // Connection base de donnéees //
 const con=mySql.createConnection({
     host:'localhost',
-    user:'root',
-    password:'',
-    port:'3306',
+    user: MYSQL_USER,
+    password: MYSQL_PASSWORD,
+    port: MYSQL_PORT,
     databases: BDD_NAME    
 });
 con.connect();
