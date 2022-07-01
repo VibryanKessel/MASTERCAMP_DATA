@@ -3,3 +3,4 @@ client/node_modules
 client/.expo
 server/utils/ingredients.csv
 server/utils/fetchApiIngredints.ipynb
+server/utils/agribalyse-detail-etape.csv
