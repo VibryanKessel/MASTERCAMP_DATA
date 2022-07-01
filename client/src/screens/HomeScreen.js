@@ -9,9 +9,9 @@ import Footer from "../components/Footer";
 
 export default () => {
     const dispatch = useDispatch();
-    const [selectedLanguage, setSelectedLanguage] = useState();
     const logOut = () => dispatch({ type:"LOGOUT"})
-    const categories = [
+    const [selectedCategory, setCategory] = useState();
+    const Topcategories = [
         "Breavet",
         "Liclangue",
         "Preaquat",
@@ -23,9 +23,20 @@ export default () => {
         "Clémentine D'Orage",
         "Tamarin Tranquille"
         ]
-        
+    const categories = [
+        "Breavet",
+        "Liclangue",
+        "Preaquat",
+        "Ibburine",
+        "Eolo",
+        "Guarana Monstrueux",
+        "Abricot Aigre",
+        "Ail Oriental",
+        "Clémentine D'Orage",
+        "Tamarin Tranquille"
+    ]
     return <View>
-        <View style = { tw`w-5/6 self-center` }>
+        <View style = { tw`mx-5 self-center` }>
             <Text style = { tw` bg-gray-300 p-5 my-5 rounded-md` }>
                 Labore est laboris est veniam aliquip pariatur. Ut velit exercitation ad et. Aliqua eu aute et sit cillum quis anim occaecat nisi consectetur aliquip quis aute elit.
                 Exercitation cupidatat ea cupidatat culpa duis amet consequat. Qui elit dolor dolore aute reprehenderit incididunt. Voluptate aliqua voluptate aliqua velit ullamco incididunt consequat. Eu adipisicing cillum ipsum ex excepteur ex proident occaecat velit veniam ipsum esse officia sunt. Veniam laborum ad consequat proident nostrud adipisicing pariatur eu officia. Eu eiusmod culpa ea fugiat nisi esse nulla ut et laboris. Commodo aliqua amet aliqua ipsum reprehenderit commodo esse.
@@ -40,18 +51,25 @@ export default () => {
                 </Text>
             </Text>
         </View>
-        <View style = { tw`self-center w-5/6 p-5 bg-gray-300 rounded-md` }>
+        <View style = { tw`self-center  p-13 bg-gray-300 rounded-md` }>
             <View style = { tw`flex flex-row justify-around bg-gray-500 p-2` }>
                 <Picker
                     style = { tw`bg-orange-500 h-7 w-1/3  text-center text-lg` }
-                    selectedValue={selectedLanguage}
+                    selectedValue={selectedCategory}
                     onValueChange={(itemValue, itemIndex) =>
-                        setSelectedLanguage(itemValue)
+                        setCategory(itemValue)
                     }>
-                    <Picker.Item 
-                        style = { tw`bg-slate-100 text-center text-lg` }
-                        label="Java" value="java" 
-                    />
+                    {
+                        categories.map(
+                            (el,idx) => {
+                                return <Picker.Item
+                                key = {idx} 
+                                style = { tw`bg-slate-100 text-center text-lg` }
+                                label= { el } value= { el } 
+                                />
+                            }
+                        )
+                    }
                 </Picker>
                 <View style = { tw`h-7 flex flex-row w-1/2 bg-red-500` }>
                     <TextInput
@@ -70,15 +88,7 @@ export default () => {
                     TOP CATEGORIES
                 </Text>
             </View>
-            <Carousel content = { categories }/>
-            <View style = { tw`border-b-2 my-3` }>
-                <Text style = { tw`font-bold text-lg` }>
-                    TRENDY MEALS
-                </Text>
-            </View>
-            <Carousel content = { categories }/>
-        </View>
-        <Footer/>
+            <Carousel content = { Topcategories }/>
         {/* <TouchableOpacity 
             onPress={() => { logOut() }}
             style = {tw`shadow-lg shadow-gray-500/50 border-2 border-orange-500 bg-orange-500 font-black h-10 rounded`}
@@ -87,5 +97,13 @@ export default () => {
                 LOG OUT
             </Text>
         </TouchableOpacity> */}
+            <View style = { tw`border-b-2 my-3` }>
+                <Text style = { tw`font-bold text-lg` }>
+                    TRENDY MEALS
+                </Text>
+            </View>
+            <Carousel content = { categories }/>
+        </View>
+        <Footer/>
     </View>
 }

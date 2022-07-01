@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 26 juin 2022 à 13:57
+-- Généré le : ven. 01 juil. 2022 à 11:55
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -106,7 +106,10 @@ INSERT INTO `Client` (`id`, `nom`, `email`, `motDePasse`, `dateNaissance`, `tail
 CREATE TABLE `Ingredients` (
   `id` int(8) NOT NULL,
   `name` varchar(18) DEFAULT NULL,
-  `categories` varchar(20) DEFAULT NULL,
+  `categorie` varchar(20) DEFAULT NULL,
+  `sous_categorie` varchar(30) NOT NULL,
+  `eco_score` float NOT NULL,
+  `saison_score` float NOT NULL,
   `image` varchar(23) DEFAULT NULL,
   `estimatedCost` decimal(5,2) DEFAULT NULL,
   `calories` int(6) DEFAULT NULL,
@@ -123,67 +126,65 @@ CREATE TABLE `Ingredients` (
 -- Déchargement des données de la table `Ingredients`
 --
 
-INSERT INTO `Ingredients` (`id`, `name`, `categories`, `image`, `estimatedCost`, `calories`, `caloriesPODN`, `fat`, `fatPODN`, `carbohydrates`, `carbohydratesPODN`, `protein`, `proteinPODN`) VALUES
-(1106, 'goat\'s milk', 'animal product|drink', 'milk.png', '0.14', 1, 0, 0, 0, 0, 0, 0, 0),
-(1123, 'eggs', 'animal product', 'egg.png', '24.00', 63, 3, 4, 6, 0, 0, 6, 11),
-(1125, 'yolk', 'animal product', 'egg-yolk.jpg', '24.00', 58, 3, 5, 7, 1, 0, 3, 6),
-(2015, 'curry powder trio', 'spices', 'curry-powder.jpg', '5.11', 3, 0, 0, 0, 1, 0, 0, 0),
-(5139, 'duck', 'animal product', 'duck.png', '558.57', 3087, 154, 301, 462, 0, 0, 88, 176),
-(5317, 'duck legs', 'animal product', 'duck-legs.jpg', '172.12', 374, 19, 20, 30, 0, 0, 46, 92),
-(6008, 'beef broth', 'animal product', 'beef-broth.png', '0.24', 0, 0, 0, 0, 0, 0, 0, 0),
-(6038, 'cheese soup', 'animal product', 'cheddar-cheese-soup.png', '0.68', 1, 0, 0, 0, 0, 0, 0, 0),
-(6963, 'fish stock', 'animal product', 'chicken-broth.png', '0.31', 0, 0, 0, 0, 0, 0, 0, 0),
-(6973, 'chile paste', '', 'chili-paste.png', '1.29', 1, 0, 0, 0, 0, 0, 0, 0),
-(8120, 'old fashioned oats', 'cereal', 'rolled-oats.jpg', '0.39', 4, 0, 0, 0, 1, 0, 0, 0),
-(9019, 'apple sauce', 'fruit', 'applesauce.png', '0.31', 0, 0, 0, 0, 0, 0, 0, 0),
-(9040, 'ripe bananas', 'fruit', 'bananas.jpg', '15.73', 105, 5, 0, 1, 27, 9, 1, 3),
-(9042, 'blackberry', 'fruit', 'blackberries.jpg', '1.77', 1, 0, 0, 0, 0, 0, 0, 0),
-(9148, 'kiwifruit', 'fruit', 'kiwi.png', '59.87', 53, 3, 0, 1, 13, 4, 1, 2),
-(9159, 'limes', 'fruit', 'lime.jpg', '25.00', 20, 1, 0, 0, 7, 2, 0, 1),
-(9181, 'cantaloupes', 'fruit', 'cantaloupe.png', '150.00', 188, 9, 1, 2, 45, 15, 5, 9),
-(9195, 'olive', 'fruit', 'olives-mixed.jpg', '3.14', 6, 0, 1, 1, 0, 0, 0, 0),
-(9200, 'oranges', 'fruit', 'orange.png', '29.11', 62, 3, 0, 0, 15, 5, 1, 2),
-(9206, 'juice of orange', 'drink', 'orange-juice.jpg', '12.20', 27, 1, 0, 0, 6, 2, 0, 1),
-(9273, 'pineapple juice', 'drink', 'pineapple-juice.jpg', '0.17', 1, 0, 0, 0, 0, 0, 0, 0),
-(9316, 'strawberry', 'fruit', 'strawberries.png', '10.71', 4, 0, 0, 0, 1, 0, 0, 0),
-(9326, 'watermelon chunks', 'fruit', 'watermelon.png', '699.00', 1350, 68, 7, 10, 340, 113, 27, 55),
-(9442, 'pomegranate juice', 'drink', 'pomegranate-juice.jpg', '1.05', 1, 0, 0, 0, 0, 0, 0, 0),
-(11001, 'microgreens', '', 'alfalfa-sprouts.png', '0.93', 0, 0, 0, 0, 0, 0, 0, 0),
-(11676, 'radish sprouts', 'vegetable', 'alfalfa-sprouts.png', '0.93', 0, 0, 0, 0, 0, 0, 0, 0),
-(14084, 'wine', 'drink', 'red-wine.jpg', '1.46', 1, 0, 0, 0, 0, 0, 0, 0),
-(14096, 'red wine', 'drink', 'red-wine.jpg', '978.75', 638, 32, 0, 0, 20, 7, 1, 1),
-(14136, 'gingerale', 'drink', 'soda-can.jpg', '0.07', 0, 0, 0, 0, 0, 0, 0, 0),
-(14412, 'purified water', 'drink', 'water.png', '0.00', 0, 0, 0, 0, 0, 0, 0, 0),
-(16112, 'Miso Soybean Paste', 'cereal', 'miso.jpg', '2.68', 2, 0, 0, 0, 0, 0, 0, 0),
-(18019, 'banana bread', 'fruit', 'quick-bread.png', '401.79', 1467, 73, 47, 73, 246, 82, 19, 39),
-(18064, 'bread', 'cereal', 'white-bread.jpg', '10.00', 77, 4, 1, 2, 13, 4, 3, 6),
-(19719, 'apricot jam', 'fruit', 'apricot-jam.jpg', '1.25', 2, 0, 0, 0, 1, 0, 0, 0),
-(23572, 'beef', 'animal product', 'beef-cubes-raw.png', '0.78', 3, 0, 0, 0, 0, 0, 0, 0),
-(35137, 'corn meal', 'cereal', 'cornmeal.png', '0.32', 4, 0, 0, 0, 1, 0, 0, 0),
-(43479, 'shaoxing wine', 'drink', 'fish-sauce.jpg', '1.60', 1, 0, 0, 0, 0, 0, 0, 0),
-(93623, 'lettuce leaves', 'vegetable', 'iceberg-lettuce.jpg', '8.86', 4, 0, 0, 0, 1, 0, 0, 0),
-(93657, 'shrimp paste', 'animal product', 'shrimp-paste.jpg', '2.50', 3, 0, 0, 0, 0, 0, 1, 2),
-(98862, 'olive paste', 'fruit', 'olive-tapenade.jpg', '3.04', 0, 0, 0, 0, 0, 0, 0, 0),
-(98916, 'truffle mushroom', 'vegetable', 'truffle-mushrooms.png', '222.00', 0, 0, 0, 0, 5, 2, 2, 3),
-(99094, 'acai berry powder', 'spices', 'acai-berry-powder.jpg', '12.94', 5, 0, 0, 1, 0, 0, 0, 0),
-(99169, 'bread bowl', 'cereal', 'bread-bowl.png', '0.88', 3, 0, 0, 0, 0, 0, 0, 0),
-(99184, 'lemonade', 'drink', 'lemonade.jpg', '0.21', 1, 0, 0, 0, 0, 0, 0, 0),
-(99240, 'puy lentils', 'lentils|pulse', 'lentils-puy.jpg', '1.34', 4, 0, 0, 0, 1, 0, 0, 1),
-(1006170, 'veal stock', 'animal product', 'beef-broth.png', '0.32', 0, 0, 0, 0, 0, 0, 0, 0),
-(1009159, 'lime rind', 'fruit', 'zest-lime.jpg', '558.33', 20, 1, 0, 0, 7, 2, 0, 1),
-(1009286, 'pomegranates', 'fruit', 'pomegranate.jpg', '156.00', 234, 12, 3, 5, 53, 18, 5, 9),
-(1015006, 'chicken meat', 'animal product', 'chicken-breasts.png', '887.70', 2872, 144, 201, 310, 0, 0, 249, 497),
-(1019070, 'sour cherries', 'fruit', 'cherries.jpg', '6.93', 5, 0, 0, 0, 1, 0, 0, 0),
-(1072047, 'onion salt', 'spices|vegetable', 'garlic-salt.jpg', '0.00', 0, 0, 0, 0, 0, 0, 0, 0),
-(1092034, 'fish rub', 'animal product', 'seasoning.png', '5.03', 3, 0, 0, 0, 1, 0, 0, 0),
-(10011238, 'mushroom mix', 'mushrooms', 'mixed-mushrooms.png', '28.00', 5, 0, 0, 0, 1, 0, 0, 1),
-(10014623, 'blackberry juice', 'drink', 'blackberry-juice.jpg', '0.46', 0, 0, 0, 0, 0, 0, 0, 0),
-(10115261, 'whole fish', 'animal product', 'fish-fillet.jpg', '1.78', 1, 0, 0, 0, 0, 0, 0, 0),
-(10219172, 'strawberry gelatin', 'fruit', 'red-jello.png', '1.07', 4, 0, 0, 0, 1, 0, 0, 0),
-(10316069, 'dal', 'pulse', 'lentils-brown.jpg', '0.29', 4, 0, 0, 0, 1, 0, 0, 1),
-(10410123, 'pancetta', 'animal product', 'pancetta.png', '4.00', 4, 0, 0, 1, 0, 0, 0, 0),
-(10619297, 'cherry jam', 'fruit', 'cherry-jam.jpg', '1.25', 3, 0, 0, 0, 1, 0, 0, 0),
-(13211111, 'avocado leaf', 'spices', 'avocado-leaves.jpg', '0.35', 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `Ingredients` (`id`, `name`, `categorie`, `sous_categorie`, `eco_score`, `saison_score`, `image`, `estimatedCost`, `calories`, `caloriesPODN`, `fat`, `fatPODN`, `carbohydrates`, `carbohydratesPODN`, `protein`, `proteinPODN`) VALUES
+(1106, 'goat\'s milk', 'animal product', 'milk', 0.07048, 4, 'milk.png', '0.14', 1, 0, 0, 0, 0, 0, 0, 0),
+(1123, 'eggs', 'animal product', 'egg', 0.095047, 4, 'egg.png', '24.00', 63, 3, 4, 6, 0, 0, 6, 11),
+(1125, 'yolk', 'animal product', 'egg', 0.095047, 4, 'egg-yolk.jpg', '24.00', 58, 3, 5, 7, 1, 0, 3, 6),
+(2015, 'curry powder trio', 'spices', 'curry', 0.035993, 3, 'curry-powder.jpg', '5.11', 3, 0, 0, 0, 1, 0, 0, 0),
+(5139, 'duck', 'animal product', 'meat', 0.300892, 4, 'duck.png', '558.57', 3087, 154, 301, 462, 0, 0, 88, 176),
+(5317, 'duck legs', 'animal product', 'meat', 0.300892, 4, 'duck-legs.jpg', '172.12', 374, 19, 20, 30, 0, 0, 46, 92),
+(6008, 'beef broth', 'animal product', 'meat', 0.300892, 4, 'beef-broth.png', '0.24', 0, 0, 0, 0, 0, 0, 0, 0),
+(6038, 'cheese soup', 'animal product', 'milk', 0.105453, 4, 'cheddar-cheese-soup.png', '0.68', 1, 0, 0, 0, 0, 0, 0, 0),
+(6963, 'fish stock', 'animal product', 'fish', 0.223568, 4, 'chicken-broth.png', '0.31', 0, 0, 0, 0, 0, 0, 0, 0),
+(6973, 'chile paste', 'vegetable', 'pepper', 0.037854, 0, 'chili-paste.png', '1.29', 1, 0, 0, 0, 0, 0, 0, 0),
+(8120, 'old fashioned oats', 'cereal', 'oats', 0.074338, 0, 'rolled-oats.jpg', '0.39', 4, 0, 0, 0, 1, 0, 0, 0),
+(9019, 'apple sauce', 'fruit', 'apple', 0.05379, 5, 'applesauce.png', '0.31', 0, 0, 0, 0, 0, 0, 0, 0),
+(9040, 'ripe bananas', 'fruit', 'banana', 0.05379, 0, 'bananas.jpg', '15.73', 105, 5, 0, 1, 27, 9, 1, 3),
+(9042, 'blackberry', 'fruit', 'blackberry', 0.05379, 0, 'blackberries.jpg', '1.77', 1, 0, 0, 0, 0, 0, 0, 0),
+(9148, 'kiwifruit', 'fruit', 'kiwi', 0.05379, 0, 'kiwi.png', '59.87', 53, 3, 0, 1, 13, 4, 1, 2),
+(9159, 'limes', 'fruit', 'lime', 0.05379, 0, 'lime.jpg', '25.00', 20, 1, 0, 0, 7, 2, 0, 1),
+(9181, 'cantaloupes', 'fruit', 'melon', 0.05379, 5, 'cantaloupe.png', '150.00', 188, 9, 1, 2, 45, 15, 5, 9),
+(9195, 'olive', 'fruit', 'olive', 0.05379, 0, 'olives-mixed.jpg', '3.14', 6, 0, 1, 1, 0, 0, 0, 0),
+(9200, 'oranges', 'fruit', 'orange', 0.05379, 0, 'orange.png', '29.11', 62, 3, 0, 0, 15, 5, 1, 2),
+(9206, 'juice of orange', 'drink', 'orange', 0.05379, 0, 'orange-juice.jpg', '12.20', 27, 1, 0, 0, 6, 2, 0, 1),
+(9273, 'pineapple juice', 'drink', 'pineapple', 0.05379, 0, 'pineapple-juice.jpg', '0.17', 1, 0, 0, 0, 0, 0, 0, 0),
+(9316, 'strawberry', 'fruit', 'strawberry', 0.05379, 0, 'strawberries.png', '10.71', 4, 0, 0, 0, 1, 0, 0, 0),
+(9326, 'watermelon chunks', 'fruit', 'watermelon', 0.05379, 5, 'watermelon.png', '699.00', 1350, 68, 7, 10, 340, 113, 27, 55),
+(9442, 'pomegranate juice', 'drink', 'pomegrana', 0.05379, 0, 'pomegranate-juice.jpg', '1.05', 1, 0, 0, 0, 0, 0, 0, 0),
+(14084, 'wine', 'drink', 'wine', 0, 0, 'red-wine.jpg', '1.46', 1, 0, 0, 0, 0, 0, 0, 0),
+(14096, 'red wine', 'drink', 'wine', 0, 0, 'red-wine.jpg', '978.75', 638, 32, 0, 0, 20, 7, 1, 1),
+(14136, 'gingerale', 'drink', 'soda', 0, 0, 'soda-can.jpg', '0.07', 0, 0, 0, 0, 0, 0, 0, 0),
+(14412, 'purified water', 'drink', 'water', 0, 0, 'water.png', '0.00', 0, 0, 0, 0, 0, 0, 0, 0),
+(16112, 'Miso Soybean Paste', 'cereal', '', 0, 0, 'miso.jpg', '2.68', 2, 0, 0, 0, 0, 0, 0, 0),
+(18019, 'banana bread', 'fruit', 'bread', 0, 0, 'quick-bread.png', '401.79', 1467, 73, 47, 73, 246, 82, 19, 39),
+(18064, 'bread', 'cereal', 'bread', 0, 0, 'white-bread.jpg', '10.00', 77, 4, 1, 2, 13, 4, 3, 6),
+(19719, 'apricot jam', 'fruit', 'apricot', 0, 0, 'apricot-jam.jpg', '1.25', 2, 0, 0, 0, 1, 0, 0, 0),
+(23572, 'beef', 'animal product', 'meat', 0, 0, 'beef-cubes-raw.png', '0.78', 3, 0, 0, 0, 0, 0, 0, 0),
+(35137, 'corn meal', 'cereal', 'corn', 0, 0, 'cornmeal.png', '0.32', 4, 0, 0, 0, 1, 0, 0, 0),
+(43479, 'shaoxing wine', 'drink', 'wine', 0, 0, 'fish-sauce.jpg', '1.60', 1, 0, 0, 0, 0, 0, 0, 0),
+(93623, 'lettuce leaves', 'vegetable', 'leaves', 0, 0, 'iceberg-lettuce.jpg', '8.86', 4, 0, 0, 0, 1, 0, 0, 0),
+(93657, 'shrimp paste', 'animal product', 'shrimp', 0, 0, 'shrimp-paste.jpg', '2.50', 3, 0, 0, 0, 0, 0, 1, 2),
+(98862, 'olive paste', 'fruit', 'olive', 0, 0, 'olive-tapenade.jpg', '3.04', 0, 0, 0, 0, 0, 0, 0, 0),
+(98916, 'truffle mushroom', 'vegetable', 'mushroom', 0, 0, 'truffle-mushrooms.png', '222.00', 0, 0, 0, 0, 5, 2, 2, 3),
+(99094, 'acai berry powder', 'spices', 'acai berry ', 0, 0, 'acai-berry-powder.jpg', '12.94', 5, 0, 0, 1, 0, 0, 0, 0),
+(99169, 'bread bowl', 'cereal', 'bread', 0, 0, 'bread-bowl.png', '0.88', 3, 0, 0, 0, 0, 0, 0, 0),
+(99184, 'lemonade', 'drink', 'lemonade', 0, 0, 'lemonade.jpg', '0.21', 1, 0, 0, 0, 0, 0, 0, 0),
+(99240, 'puy lentils', 'leguminous', 'lentils', 0, 0, 'lentils-puy.jpg', '1.34', 4, 0, 0, 0, 1, 0, 0, 1),
+(1006170, 'veal stock', 'animal product', 'meat', 0, 0, 'beef-broth.png', '0.32', 0, 0, 0, 0, 0, 0, 0, 0),
+(1009159, 'lime rind', 'fruit', 'lime', 0, 0, 'zest-lime.jpg', '558.33', 20, 1, 0, 0, 7, 2, 0, 1),
+(1009286, 'pomegranates', 'fruit', 'pomegranates', 0, 0, 'pomegranate.jpg', '156.00', 234, 12, 3, 5, 53, 18, 5, 9),
+(1015006, 'chicken meat', 'animal product', 'meat', 0, 0, 'chicken-breasts.png', '887.70', 2872, 144, 201, 310, 0, 0, 249, 497),
+(1019070, 'sour cherries', 'fruit', 'cherries', 0, 0, 'cherries.jpg', '6.93', 5, 0, 0, 0, 1, 0, 0, 0),
+(1072047, 'onion salt', 'spices', '', 0, 0, 'garlic-salt.jpg', '0.00', 0, 0, 0, 0, 0, 0, 0, 0),
+(1092034, 'fish rub', 'animal product', 'fish', 0, 0, 'seasoning.png', '5.03', 3, 0, 0, 0, 1, 0, 0, 0),
+(10011238, 'mushroom mix', 'vegetable', 'mushroom', 0, 0, 'mixed-mushrooms.png', '28.00', 5, 0, 0, 0, 1, 0, 0, 1),
+(10014623, 'blackberry juice', 'fruit', 'blackberry', 0, 0, 'blackberry-juice.jpg', '0.46', 0, 0, 0, 0, 0, 0, 0, 0),
+(10115261, 'whole fish', 'animal product', 'fish', 0, 0, 'fish-fillet.jpg', '1.78', 1, 0, 0, 0, 0, 0, 0, 0),
+(10219172, 'strawberry gelatin', 'fruit', 'strawberry', 0, 0, 'red-jello.png', '1.07', 4, 0, 0, 0, 1, 0, 0, 0),
+(10316069, 'dal', 'leguminous', 'lentils', 0, 0, 'lentils-brown.jpg', '0.29', 4, 0, 0, 0, 1, 0, 0, 1),
+(10410123, 'pancetta', 'animal product', 'pork', 0, 0, 'pancetta.png', '4.00', 4, 0, 0, 1, 0, 0, 0, 0),
+(10619297, 'cherry jam', 'fruit', 'cherries', 0, 0, 'cherry-jam.jpg', '1.25', 3, 0, 0, 0, 1, 0, 0, 0),
+(13211111, 'avocado leaf', 'spices', '', 0, 0, 'avocado-leaves.jpg', '0.35', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,8 @@ INSERT INTO `SuiviRegime` (`id`, `dateDebut`, `ajoutCalorieJournalier`, `masseDe
 (37, '2021-03-22', 492, 95, 102, 191, 80, 1, 5),
 (39, '2021-02-24', 328, 71, 68, 192, 90, 3, 24),
 (40, '2021-03-19', 445, 69, 68, 189, 90, 3, 48),
-(45, '2021-03-22', 452, 89, 52, 199, 30, 2, 2);
+(45, '2021-03-22', 452, 89, 52, 199, 30, 2, 2),
+(53, '2022-06-26', 350, 80, NULL, 190, 60, 2, 1);
 
 --
 -- Index pour les tables déchargées
@@ -275,8 +277,8 @@ ALTER TABLE `Ingredients`
 --
 ALTER TABLE `SuiviRegime`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_Client` (`idClient`),
-  ADD KEY `rythmeActivité` (`rythmeActivite`);
+  ADD KEY `rythmeActivité` (`rythmeActivite`),
+  ADD KEY `id_Client` (`idClient`) USING BTREE;
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -292,7 +294,7 @@ ALTER TABLE `Client`
 -- AUTO_INCREMENT pour la table `SuiviRegime`
 --
 ALTER TABLE `SuiviRegime`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

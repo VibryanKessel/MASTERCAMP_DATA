@@ -28,7 +28,7 @@ const blocks = [
 ]
 const Section = ( {block} ) => {
     return(
-        <View style = { tw`flex flex-col p-2` }>
+        <View style = { tw`flex flex-col` }>
             <Text style = { tw`h-1/3 font-bold text-xl text-center` }>
                 {block.title}
             </Text>
@@ -48,7 +48,7 @@ const Section = ( {block} ) => {
 
 export default () => {
     return( 
-        <View style = { tw`flex flex-row bg-gray-600 w-5/6 self-center h-60 justify-around` }>
+        <View style = { tw`flex flex-row bg-gray-600 w-full py-2 self-center h-60 justify-around` }>
             {
                 blocks.map(
                     (block,idx) => {
