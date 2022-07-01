@@ -43,3 +43,14 @@ Etape4 : Exécutez dans le dossier `/client` `expo web` pour démarrer le serveu
          ( L'url par défaut est souvent `http://10.188.151.156:19006`)
 
 Pour le login vous pourrez utiliser les ids : (email:`a@gmail.com`, motdepasse: `admin`).
+
+
+# Extra
+
+- REMPLISSAGE_DES_DONNEES : La plupart de nos données ont été remplis manuellement grâce à l'analyse faite dans les fichiers suivants : `server/utils/treatAgribalyse.ipynb`, `server/utils/fetchApiIngredints.ipynb`
+
+- BUGS : 
+  - Certaines installations peuvent échouer parce que vous n'êtes pas passer en mode superutilisateur 
+  - (Bugs probables) Nous avons tous utiliser des systèmes d'exploitations UBUNTU pour le développement. Nous avons pas faits de tests sur des systèmes WINDOWS. Il est donc possible que certains bugs surviennent.
+
+
