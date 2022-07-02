@@ -1,8 +1,7 @@
 const express = require('express');
 const axios = require("axios");
 const asyncHandler = require('express-async-handler')
-const { getIngredients, categorizeIngredients, combine } = require('../utils/dataProcessing');
-const { getRecipesFromApiBaseOnIngredients } = require('../utils/api_functions');
+const { getRecipesFromApiBaseOnIngredients, getRecipesFromApiBaseOnNutrients } = require('../utils/api_functions');
 
 const baseUrl = "https://api.spoonacular.com/recipes"
 
@@ -13,14 +12,31 @@ const loginRouter = (con) => {
 
     router.get('/', asyncHandler(async (req, res, next) => {
 
-        const recipes = await getRecipesFromApiBaseOnIngredients(con)
-        console.log(recipes)
-        res.status(200).json(recipes);
+        try {
+            
+            const recipes = await getRecipesFromApiBaseOnIngredients(con);
+            console.log(recipes.length);
+            res.status(200).json(recipes);
+        } catch (error) {
+
+            res.status(500).json({"message": "Internal server error"})
+            throw error;
+        }
     }));
 
     router.get('/forDiet/:idRegime', asyncHandler(async (req, res, next) => {
+        
+        try {
+            
+            const recipes = await getRecipesFromApiBaseOnNutrients(con);
+            console.log(recipes.length);
+            res.status(200).json(recipes);
+        } catch (error) {
 
-        res.status(200).json(recipes);
+            res.status(500).json({"message": "Internal server error"})
+            throw error;
+        }
+        
     }));
 
     /*---------------------------------------------------------- */

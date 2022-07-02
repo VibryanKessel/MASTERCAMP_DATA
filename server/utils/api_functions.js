@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-
+const { getIngredients, categorizeIngredients, combine } = require('../utils/dataProcessing');
 
 
 function getRecipesFromApiBaseOnIngredients(con) {
@@ -40,6 +40,35 @@ function getRecipesFromApiBaseOnIngredients(con) {
 };
 
 
+function getRecipesFromApiBaseOnNutrients(con) {
+    return new Promise(async (resolve, reject) => {
+
+
+        for (let i = 0; i < combinaisons_ingredients.length; i++) {
+            let response = await axios.get(baseUrl + "/findByIngredients", {
+                params: {
+                    "ingredients": combinaisons_ingredients[i],
+                    "apiKey": "29cb37909ef84b8d867a0350baee367d",
+                    "number": 10
+                }
+            });
+
+            recipes = recipes.concat(response.data);
+        }
+
+        for (let i = 0; i < recipes.length; i++) {
+
+            recipes[i] = {
+                "id": recipes[i].id,
+                "title": recipes[i].title,
+                "image": recipes[i].image,
+            }
+        }
+
+        resolve(recipes);
+    });
+}
 module.exports = {
     getRecipesFromApiBaseOnIngredients,
+    getRecipesFromApiBaseOnNutrients
 };
