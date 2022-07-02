@@ -4,8 +4,10 @@ import { IconButton } from "react-native-paper"
 import tw from "twrnc"
 
 export default ({ content }) => {
-    const [data,setData] = useState(content.splice(0,3))
+    const [data,setData] = useState(content)
     
+    const numberOfSlidingItems = 3
+
     const range = (start, end) => {
         let tab = [];
         for (let i = start; i < end; i++) {
@@ -18,23 +20,31 @@ export default ({ content }) => {
         tab[i] = tab[j]
         tab[j] = temp
     }
-    const scrollLeft = (numberOfItems) => {
-        let copy = content
-        console.log(copy)
+    const slideLeft = (numberOfItems) => {
+        let copy = data
         if(copy.length > numberOfItems && numberOfItems != 0){
             for (const i in range(0,numberOfItems)) {
                 switchIndex(copy, i, copy.length-numberOfItems+parseInt(i))
             }
-            setData(copy.splice(0,3))
+            setData([...copy])
         }
-        // console.log(data)
-    } 
+    }
+    const slideRight = (numberOfItems) => {
+        let copy = data
+        if(copy.length > numberOfItems && numberOfItems != 0){
+            for (const i in range(0,numberOfItems)) {
+                switchIndex(copy, copy.length-numberOfItems+parseInt(i), i)
+            }
+            setData([...copy])
+        }
+    }
+    
     return(
         <View style = { tw`flex flex-row my-3 p-2 justify-between` }>
             <IconButton
                 style = { tw`self-center bg-orange-500 ` }
                 icon = "arrow-left-circle"
-                onPress={ () => { scrollLeft(3) } }
+                onPress={ () =>  slideLeft(numberOfSlidingItems) } 
             />
             {/* <View style = { tw`flex flex-row border-2 relative r-15 py-2 h-full w-5/6 overflow-hidden` }>
             {    
@@ -60,6 +70,7 @@ export default ({ content }) => {
             </View> */}
             <FlatList
             numColumns={data.length}
+            extraData = { data }
             style = { tw`self-center h-50` }
             data = { data }
             renderItem = { 
@@ -80,7 +91,7 @@ export default ({ content }) => {
             <IconButton
                 style = { tw`self-center bg-orange-500` }
                 icon = "arrow-right-circle"
-                onPress={ ()=>{} }
+                onPress={ () => slideRight(numberOfSlidingItems) }
             />
         </View>
     )
