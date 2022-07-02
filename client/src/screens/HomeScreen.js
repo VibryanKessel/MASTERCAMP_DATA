@@ -58,14 +58,14 @@ export default () => {
                 </Text>
             </Text>
         </View>
-        <TouchableOpacity 
+        {/* <TouchableOpacity 
             onPress={() => { logOut() }}
             style = {tw`shadow-lg shadow-gray-500/50 border-2 border-orange-500 bg-orange-500 font-black h-10 rounded`}
         >
             <Text style = { tw` text-gray-100 text-xl text-center font-bold`}>
                 LOG OUT
             </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style = { tw`self-center w-9/10 p-13 bg-gray-300 rounded-md` }>
             <View style = { tw`flex flex-row justify-around bg-gray-500 p-2` }>
                 <Picker
