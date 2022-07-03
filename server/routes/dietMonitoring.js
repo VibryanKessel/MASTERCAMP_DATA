@@ -1,5 +1,5 @@
 const express =require('express');
-const monitorignRouter=(con)=>{
+const monitoringRouter=(con)=>{
     const router=express.Router();
     /*----------------------------------------------------- */
 
@@ -8,23 +8,45 @@ const monitorignRouter=(con)=>{
         if (req.session.user != null)
 
         {
-            con.query("INSERT INTO `SuiviRegime`( `dateDebut`, `ajoutCalorieJournalier`, `masseDebut`, `taille`, `periodeRegime`, `rythmeActivite`, `idClient`) VALUES (?,?,?,?,?,?,?)",[
-                body.debutDate,
-                body.ajoutCalorieJournalier,
-                body.masseDebut,
-                body.taille,
-                body.periodeRegime,
-                body.rythmeActivite,
-                req.session.user.id
+            /* Création du régime personnalisé */
+            con.query(`INSERT INTO RegimePersonnalise(idClient, dateDebut, periodeRegime)  VALUES (?,?,?)`,[
+                req.session.user.id,
+                body.dateDebut,
+                body.periodeRegime
             ], (err, results) => {
                 if(err) {
                     res.status(500).json({"message":"Internal server error"});
                     throw err;
                 };
+
+                /* Création de la fiche de suivi du régime */
+                con.query(`
+                    INSERT INTO SuiviRegime( idRegime, ajoutCalorieJournalier, masseDebut, taille, rythmeActivite) VALUES (
+                        (   
+                            SELECT idRegime FROM RegimePersonnalise 
+                            WHERE idClient = ? 
+                            ORDER BY dateDebut  
+                            LIMIT 1
+                        ),?,?,?,?)
+                `,[
+                    req.session.user.id,
+                    body.calorieJournalier,
+                    body.masseDebut,
+                    body.taille,
+                    body.rythmeActivite
+                ], (err, results) => {
+                    
+                    if(err) {
+                        res.status(500).json({"message":"Internal server error"});
+                        throw err;
+                    }; 
+
+                    res.status(200).json({
+                        "message": "Your personnal diet data have been registered"
+                    })
+                });
                 
-                res.status(200).json({
-                    "message":"A monitoring file has been created"
-                })
+
             });
         }
         else
@@ -32,13 +54,18 @@ const monitorignRouter=(con)=>{
         return;
     });
 
-    router.get("/", (req, res) => {
+    router.get("/", (req, res) => {  // Cette route sert à récupérer les infos 
         if (req.session.user != null)
 
         {
-            con.query("SELECT * FROM SuiviRegime WHERE idClient = ?",[
-                req.session.user.id
-            ], (err, results) => {
+            con.query(
+                `
+                    SELECT Rp.idRegime, Rp.dateDebut, Rp.periodeRegime, Rs.ajoutCalorieJournalier, Rs.rythmeActivite FROM RegimePersonnalise as Rp
+                    JOIN SuiviRegime as Rs ON Rp.idRegime = Rs.idRegime
+                    WHERE Rp.idClient = ?
+                `,[
+                    req.session.user.id
+                ], (err, results) => {
                 if(err) {
                     res.status(500).json({"message":"Internal server error"});
                     throw err;
@@ -60,4 +87,4 @@ const monitorignRouter=(con)=>{
     return router;
 }
 
-module.exports=monitorignRouter;
+module.exports=monitoringRouter;

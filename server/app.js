@@ -47,7 +47,7 @@ con.query("USE "+ BDD_NAME, (err) => {
 // Configuration des routes //
 app.use('/login',loginRouter(con));
 app.use('/register',registerRouter(con));
-app.use('/dietMonitoring',monitoringRouter(con));
+app.use('/diet',monitoringRouter(con));
 app.use('/recommandation',recommandationRouter(con));
 
 app.get('/deconnexion',(req,res)=>{

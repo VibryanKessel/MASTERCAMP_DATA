@@ -1,0 +1,61 @@
+id,name,categories,image,estimatedCost,calories,caloriesPODN,fat,fatPODN,carbohydrates,carbohydratesPODN,protein,proteinPODN
+1106,goat's milk,animal product|drink,milk.png,0.14,0.69,0.03,0.04,0.06,0.04,0.01,0.04,0.07
+35137,corn meal,cereal,cornmeal.png,0.32,3.84,0.19,0.06,0.09,0.73,0.24,0.1,0.2
+23572,beef,animal product,beef-cubes-raw.png,0.78,2.54,0.13,0.2,0.31,0.0,0.0,0.17,0.34
+6008,beef broth,animal product,beef-broth.png,0.24,0.07,0.0,0.0,0.0,0.0,0.0,0.01,0.02
+1006170,veal stock,animal product,beef-broth.png,0.32,0.13,0.01,0.0,0.0,0.01,0.0,0.02,0.04
+5139,duck,animal product,duck.png,558.57,3086.56,154.33,300.56,462.4,0.0,0.0,87.78,175.57
+5317,duck legs,animal product,duck-legs.jpg,172.12,374.33,18.72,19.67,30.25,0.0,0.0,46.14,92.29
+93657,shrimp paste,animal product,shrimp-paste.jpg,2.5,3.2,0.16,0.04,0.06,0.0,0.0,0.76,1.52
+16112,Miso Soybean Paste,cereal,miso.jpg,2.68,1.98,0.1,0.06,0.09,0.25,0.08,0.13,0.26
+6973,chile paste,,chili-paste.png,1.29,1.04,0.05,0.0,0.0,0.29,0.1,0.03,0.05
+10011238,mushroom mix,mushrooms,mixed-mushrooms.png,28.0,4.76,0.24,0.07,0.11,0.95,0.32,0.31,0.63
+18064,bread,cereal,white-bread.jpg,10.0,76.72,3.84,1.27,1.95,13.3,4.43,3.0,5.99
+99169,bread bowl,cereal,bread-bowl.png,0.88,2.55,0.13,0.01,0.02,0.49,0.16,0.1,0.2
+2015,curry powder trio,spices,curry-powder.jpg,5.11,3.25,0.16,0.14,0.21,0.58,0.19,0.13,0.25
+11001,microgreens,,alfalfa-sprouts.png,0.93,0.23,0.01,0.01,0.01,0.02,0.01,0.04,0.08
+11676,radish sprouts,vegetable,alfalfa-sprouts.png,0.93,0.43,0.02,0.03,0.04,0.04,0.01,0.04,0.08
+1072047,onion salt,spices|vegetable,garlic-salt.jpg,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+10316069,dal,pulse,lentils-brown.jpg,0.29,3.53,0.18,0.01,0.02,0.6,0.2,0.26,0.52
+99240,puy lentils,lentils|pulse,lentils-puy.jpg,1.34,3.73,0.19,0.01,0.02,0.6,0.2,0.27,0.54
+1019070,sour cherries,fruit,cherries.jpg,6.93,5.04,0.25,0.02,0.02,1.28,0.43,0.08,0.17
+10410123,pancetta,animal product,pancetta.png,4.0,4.17,0.21,0.4,0.61,0.01,0.0,0.13,0.25
+98916,truffle mushroom,vegetable,truffle-mushrooms.png,222.0,0.0,0.0,0.0,0.0,4.59,1.53,1.57,3.14
+14136,gingerale,drink,soda-can.jpg,0.07,0.34,0.02,0.0,0.0,0.09,0.03,0.0,0.0
+10115261,whole fish,animal product,fish-fillet.jpg,1.78,0.96,0.05,0.02,0.03,0.0,0.0,0.2,0.4
+6963,fish stock,animal product,chicken-broth.png,0.31,0.16,0.01,0.01,0.01,0.0,0.0,0.02,0.04
+1092034,fish rub,animal product,seasoning.png,5.03,3.07,0.15,0.08,0.12,0.66,0.22,0.1,0.19
+13211111,avocado leaf,spices,avocado-leaves.jpg,0.35,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+99094,acai berry powder,spices,acai-berry-powder.jpg,12.94,5.0,0.25,0.33,0.51,0.33,0.11,0.0,0.0
+9040,ripe bananas,fruit,bananas.jpg,15.73,105.02,5.25,0.39,0.6,26.9,8.97,1.29,2.57
+18019,banana bread,fruit,quick-bread.png,401.79,1467.0,73.35,47.25,72.69,245.7,81.9,19.35,38.7
+9273,pineapple juice,drink,pineapple-juice.jpg,0.17,0.53,0.03,0.0,0.0,0.13,0.04,0.0,0.01
+9181,cantaloupes,fruit,cantaloupe.png,150.0,187.68,9.38,0.99,1.53,45.04,15.01,4.53,9.05
+9159,limes,fruit,lime.jpg,25.0,20.1,1.0,0.13,0.21,7.03,2.35,0.47,0.94
+1009159,lime rind,fruit,zest-lime.jpg,558.33,20.1,1.0,0.13,0.21,7.03,2.35,0.47,0.94
+9019,apple sauce,fruit,applesauce.png,0.31,0.42,0.02,0.0,0.0,0.11,0.04,0.0,0.0
+1009286,pomegranates,fruit,pomegranate.jpg,156.0,234.06,11.7,3.3,5.08,52.73,17.58,4.71,9.42
+9442,pomegranate juice,drink,pomegranate-juice.jpg,1.05,0.54,0.03,0.0,0.0,0.13,0.04,0.0,0.0
+99184,lemonade,drink,lemonade.jpg,0.21,0.51,0.03,0.0,0.0,0.13,0.04,0.0,0.0
+9200,oranges,fruit,orange.png,29.11,61.57,3.08,0.16,0.24,15.46,5.15,1.23,2.46
+9206,juice of orange,drink,orange-juice.jpg,12.2,27.0,1.35,0.12,0.18,6.24,2.08,0.42,0.84
+10619297,cherry jam,fruit,cherry-jam.jpg,1.25,2.78,0.14,0.0,0.0,0.69,0.23,0.0,0.01
+9148,kiwifruit,fruit,kiwi.png,59.87,52.78,2.64,0.4,0.62,12.74,4.25,0.96,1.93
+9316,strawberry,fruit,strawberries.png,10.71,3.84,0.19,0.04,0.06,0.92,0.31,0.08,0.16
+10219172,strawberry gelatin,fruit,red-jello.png,1.07,3.81,0.19,0.0,0.0,0.9,0.3,0.08,0.16
+19719,apricot jam,fruit,apricot-jam.jpg,1.25,2.42,0.12,0.0,0.0,0.64,0.21,0.01,0.01
+9042,blackberry,fruit,blackberries.jpg,1.77,0.86,0.04,0.01,0.02,0.19,0.06,0.03,0.06
+10014623,blackberry juice,drink,blackberry-juice.jpg,0.46,0.45,0.02,0.0,0.0,0.11,0.04,0.0,0.0
+6038,cheese soup,animal product,cheddar-cheese-soup.png,0.68,0.81,0.04,0.04,0.06,0.09,0.03,0.02,0.03
+14084,wine,drink,red-wine.jpg,1.46,0.83,0.04,0.0,0.0,0.03,0.01,0.0,0.0
+14096,red wine,drink,red-wine.jpg,978.75,637.5,31.88,0.0,0.0,19.58,6.53,0.52,1.05
+1123,eggs,animal product,egg.png,24.0,62.92,3.15,4.18,6.44,0.32,0.11,5.54,11.09
+1125,yolk,animal product,egg-yolk.jpg,24.0,57.96,2.9,4.77,7.34,0.65,0.22,2.86,5.72
+93623,lettuce leaves,vegetable,iceberg-lettuce.jpg,8.86,3.6,0.18,0.0,0.0,0.72,0.24,0.24,0.48
+14412,purified water,drink,water.png,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+9326,watermelon chunks,fruit,watermelon.png,699.0,1350.0,67.5,6.75,10.38,339.75,113.25,27.45,54.9
+43479,shaoxing wine,drink,fish-sauce.jpg,1.6,1.34,0.07,0.0,0.0,0.05,0.02,0.0,0.01
+9195,olive,fruit,olives-mixed.jpg,3.14,5.8,0.29,0.61,0.94,0.15,0.05,0.04,0.08
+98862,olive paste,fruit,olive-tapenade.jpg,3.04,0,0,0,0,0,0,0,0
+1015006,chicken meat,animal product,chicken-breasts.png,887.7,2872.4,143.62,201.2,309.54,0.0,0.0,248.5,496.99
+8120,old fashioned oats,cereal,rolled-oats.jpg,0.39,3.79,0.19,0.07,0.1,0.68,0.23,0.13,0.26
