@@ -1,18 +1,16 @@
 import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native"
+import { ImageBackground, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Button, TextInput } from "react-native-paper";
-import { useDispatch } from "react-redux"
 import tw from "twrnc";
 import axios from "axios";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Recommandations from "../components/Recommandations";
 import recommandations from "../datas/recommandations";
+import Navbar from "../components/Navbar";
 
 export default () => {
-    const dispatch = useDispatch();
-    const logOut = () => dispatch({ type:"LOGOUT"})
     const [selectedCategory, setCategory] = useState("Trendy");
     const [showTrendy, setTrendyVisibility] = useState(true)
 
@@ -41,8 +39,17 @@ export default () => {
         { title :"Aïoli",key : 5},
         { title :"Oeufs mimosa",key : 6},
     ]
+    const bgImage = require("../../assets/logo.jpeg")
     
+
     return <View>
+                        <ImageBackground source={bgImage} resizeMode="cover" style={ {...tw`flex-1 rotate-45 justify-center h-70 w-30 absolute left-0 top-80`} }/>
+                <View style = { tw`bg-orange-500 flex-1 h-25 w-25 rounded-lg absolute rotate-45 bottom-70 right-0`}></View>
+                <View style = { {...tw`bg-orange-500/90 rounded-full absolute right-20 top-50`,width : 100,height : 100} }></View>
+                <View style = { {...tw`bg-orange-500/60 rounded-full absolute right-15 top-45`,width : 50,height : 50} }></View>
+                
+
+        <Navbar></Navbar>
         <View style = { tw`mx-5 w-9/10 self-center` }>
             <Text style = { tw` bg-gray-300 p-5 my-5 rounded-md` }>
                 Labore est laboris est veniam aliquip pariatur. Ut velit exercitation ad et. Aliqua eu aute et sit cillum quis anim occaecat nisi consectetur aliquip quis aute elit.
@@ -58,14 +65,6 @@ export default () => {
                 </Text>
             </Text>
         </View>
-        {/* <TouchableOpacity 
-            onPress={() => { logOut() }}
-            style = {tw`shadow-lg shadow-gray-500/50 border-2 border-orange-500 bg-orange-500 font-black h-10 rounded`}
-        >
-            <Text style = { tw` text-gray-100 text-xl text-center font-bold`}>
-                LOG OUT
-            </Text>
-        </TouchableOpacity> */}
         <View style = { tw`self-center w-9/10 p-13 bg-gray-300 rounded-md` }>
             <View style = { tw`flex flex-row justify-around bg-gray-500 p-2` }>
                 <Picker
