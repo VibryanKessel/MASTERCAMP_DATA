@@ -72,6 +72,11 @@ function concat(tab_ingredients) {
     return tab_ingredients.join(",+")
 }
 
+function imc(user)
+{
+    return (user["masse"]*10000)/(user["taille"]*user["taille"]);
+}
+
 
 module.exports = {
     categorizeIngredients,
@@ -79,5 +84,6 @@ module.exports = {
     sortBasedOnEco_Score,
     sortBasedOnSaison_Score,
     combine,
-    concat
+    concat,
+    imc
 };
