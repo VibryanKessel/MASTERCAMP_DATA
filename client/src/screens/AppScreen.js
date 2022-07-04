@@ -1,4 +1,3 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { IconButton } from 'react-native-paper';
@@ -11,7 +10,7 @@ import Register from '../components/Register';
 import HomeScreen from './HomeScreen';
 import SettingsScreen from './SettingsScreen';
 
-const Tab = createMaterialTopTabNavigator();
+
 const Stack = createNativeStackNavigator();
 const Tabs = [
     {
@@ -53,11 +52,11 @@ export default () => {
             </Stack.Navigator>
         ):
         (
-            <Tab.Navigator screenOptions={{ headerShown: false}}>
+            <Stack.Navigator screenOptions={{ headerShown: false}}>
                 {
                     Tabs.map(
                         (tab,idx) => {
-                            return <Tab.Screen 
+                            return <Stack.Screen 
                                 key = { idx }
                                 name= { tab.name } 
                                 component={tab.component}
@@ -71,7 +70,7 @@ export default () => {
                         }
                     )
                 }
-            </Tab.Navigator>
+            </Stack.Navigator>
         )
     }  
 </NavigationContainer> 
