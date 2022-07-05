@@ -25,6 +25,7 @@
     "react": "^17.0.2",
     "react-dom": "17.0.2",
     "react-native": "^0.68.2",
+    "react-native-dropdown-autocomplete-textinput": "^1.0.1",
     "react-native-elements": "^3.4.2",
     "react-native-maps": "0.30.2",
     "react-native-modern-datepicker": "^1.0.0-beta.91",
