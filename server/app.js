@@ -14,6 +14,7 @@ const AI_SERVER_URL = ""
 
 //Routes//
 const loginRouter=require('./routes/login');
+const clientRouter=require('./routes/client');
 const registerRouter=require('./routes/register');
 const monitoringRouter=require('./routes/dietMonitoring');
 const recommandationRouter=require('./routes/recommandation');
@@ -49,6 +50,7 @@ app.use('/login',loginRouter(con));
 app.use('/register',registerRouter(con));
 app.use('/diet',monitoringRouter(con));
 app.use('/recommandation',recommandationRouter(con));
+app.use('/client',clientRouter(con));
 
 app.get('/deconnexion',(req,res)=>{
     console.log(`${req.session.user.nom} vient de se deconnecter`);
