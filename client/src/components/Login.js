@@ -16,7 +16,7 @@ export default () => {
         err : true
     })
     const dispatch = useDispatch()
-
+    
     const logIn = async () => {
         if ( email === "" || pwd === ""){
             setMsg({text : "Veuillez remplir tous les champs !",err : true});
@@ -24,7 +24,6 @@ export default () => {
                 const user = {email: email, mdp: pwd}
                 const response = await axios.post("http://localhost:5000/login", // On contacte le serveur qui tourne sur le port 5000 pour le login
                 user)
-                console.log(response)
                 if(response.status === 200){
                     setMsg({text : "Vous etes connecté(e)",err :false})
                     setTimeout(
@@ -34,7 +33,6 @@ export default () => {
                     setMsg({text :"User introuvable !",err : true})
                 }
         }
-        console.log(msg)
     }
     
     return( 

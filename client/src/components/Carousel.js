@@ -3,7 +3,7 @@ import { Text, View , Image, FlatList, TouchableOpacity} from "react-native"
 import { IconButton } from "react-native-paper"
 import tw from "twrnc"
 
-export default ({ content }) => {
+export default ({ content, onSelect }) => {
     const [data,setData] = useState(content)
     
     const numberOfSlidingItems = 3
@@ -52,7 +52,10 @@ export default ({ content }) => {
             style = { tw`self-center h-50` }
             data = { data }
             renderItem = { 
-                ( { item } ) => <TouchableOpacity style = { tw`flex flex-col m-2 p-2 rounded bg-slate-100 w-1/3 h-45 overflow-hidden` }>
+                ( { item } ) => <TouchableOpacity 
+                                    style = { tw`flex flex-col m-2 p-2 rounded bg-slate-100 w-1/3 h-45 overflow-hidden` }
+                                    onPress = { () => onSelect(item.title) }
+                                >
                                         <Text style = { tw`text-center text-xl font-bold` }>{ item.title }</Text>
                                         <Image
                                             style = {{

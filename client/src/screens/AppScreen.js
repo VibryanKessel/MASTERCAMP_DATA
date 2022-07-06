@@ -9,6 +9,7 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 import HomeScreen from './HomeScreen';
 import SettingsScreen from './SettingsScreen';
+import DashboardScreen from './DashboardScreen';
 import MealPreview from './MealPreview';
 
 
@@ -22,7 +23,7 @@ const Tabs = [
     },
     {
         name : 'Dashboard',
-        component : SettingsScreen,
+        component : DashboardScreen,
         label : 'Dashboard',
         iconName : 'activity'
     },

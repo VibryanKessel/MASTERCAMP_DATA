@@ -4,31 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import tw from "twrnc"
 
-import HomeScreen from '../screens/HomeScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-
-const Tabs = [
-    {
-        name : 'Home',
-        component : HomeScreen,
-        label : 'Home',
-        iconName : 'home'
-    },
-    {
-        name : 'Dashboard',
-        component : SettingsScreen,
-        label : 'Dashboard',
-        iconName : 'activity'
-    },
-    {
-        name : 'Settings',
-        component : SettingsScreen,
-        label : 'Settings',
-        iconName : 'settings'
-    }
-]
-
-export default () => {
+export default ({ tabs }) => {
     const dispatch = useDispatch();
     const logOut = () => dispatch({ type:"LOGOUT"})
     const navigation = useNavigation();
@@ -41,7 +17,7 @@ export default () => {
                 <Text style = { tw`self-center font-bold` }>{ user.email }</Text>
             </View>
             {
-                Tabs.map(
+                tabs.map(
                     (tab , idx) => <TouchableOpacity 
                                         key = { idx }
                                         style = { tw`flex flex-col w-1/7` }
