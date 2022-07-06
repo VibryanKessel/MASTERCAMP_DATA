@@ -59,6 +59,7 @@ const monitoringRouter=(con)=>{
     });
 
     router.get("/", (req, res) => {  // Cette route sert à récupérer les infos sur le régime personnalisé d'un utilisateur  
+        console.log(req.session.user);  
         if (req.session.user != null)
 
         {
@@ -88,6 +89,7 @@ const monitoringRouter=(con)=>{
 
     
     /* Requêtes liées au plannings de repas */
+    
     router.get("/:idDiet/planning", (req, res) => {   // Récupérer le planning d'un utilisateur pour un régime donné
         if (req.session.user != null)
 

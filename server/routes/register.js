@@ -1,7 +1,5 @@
 const express =require('express');
 
-
-
 const registerRouter=(con)=>{
     const router=express.Router();
     /*----------------------------------------------------- */

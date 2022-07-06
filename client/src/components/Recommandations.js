@@ -13,15 +13,21 @@ export default ( {content} ) => {
             keyExtractor = { (item) => item.id }
             data = { content }
             renderItem = { 
-                ( { item } ) => <TouchableOpacity style = { tw`flex flex-col w-1/9` }>
-                                <Text>{ reduceStringLen(item.title) }</Text>
-                                <Image 
-                                    style = {{
-                                        width: 80,
-                                        height: 80,
-                                    }}
-                                    source={ {uri : item.image}}
-                                />
+                ( { item } ) => <TouchableOpacity style = { tw`flex flex-col w-1/9` }
+                                    onPress = {
+                                        () => {
+                                            
+                                        }
+                                    }
+                                >
+                                    <Text>{ reduceStringLen(item.title) }</Text>
+                                    <Image 
+                                        style = {{
+                                            width: 80,
+                                            height: 80,
+                                        }}
+                                        source={ {uri : item.image}}
+                                    />
                             </TouchableOpacity>
              }
         />

@@ -9,6 +9,7 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 import HomeScreen from './HomeScreen';
 import SettingsScreen from './SettingsScreen';
+import MealPreview from './MealPreview';
 
 
 const Stack = createNativeStackNavigator();
@@ -70,6 +71,7 @@ export default () => {
                         }
                     )
                 }
+                <Stack.Screen name="MealPreview" component={MealPreview} />
             </Stack.Navigator>
         )
     }  

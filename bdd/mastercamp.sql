@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 01 juil. 2022 à 11:55
+-- Généré le : mer. 06 juil. 2022 à 17:21
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -189,6 +189,59 @@ INSERT INTO `Ingredients` (`id`, `name`, `categorie`, `sous_categorie`, `eco_sco
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `RegimePersonnalise`
+--
+
+CREATE TABLE `RegimePersonnalise` (
+  `idRegime` int(10) NOT NULL,
+  `idClient` int(10) NOT NULL,
+  `dateDebut` date NOT NULL,
+  `periodeRegime` int(10) DEFAULT 30
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `RegimePersonnalise`
+--
+
+INSERT INTO `RegimePersonnalise` (`idRegime`, `idClient`, `dateDebut`, `periodeRegime`) VALUES
+(1, 18, '2021-07-20', 30),
+(2, 17, '2021-12-29', 30),
+(3, 9, '2022-02-12', 30),
+(4, 22, '2021-07-18', 30),
+(5, 19, '2022-04-17', 30),
+(6, 12, '2021-07-19', 30),
+(7, 19, '2021-09-13', 30),
+(8, 22, '2022-02-23', 30),
+(9, 9, '2022-04-11', 30),
+(10, 8, '2021-08-08', 30),
+(11, 12, '2021-07-15', 30),
+(12, 21, '2021-06-12', 30),
+(13, 17, '2022-05-26', 30),
+(14, 2, '2021-12-31', 30),
+(15, 15, '2022-01-12', 30),
+(16, 5, '2021-07-13', 30),
+(17, 1, '2022-03-09', 30),
+(18, 20, '2022-06-21', 30),
+(19, 18, '2021-06-09', 30),
+(20, 7, '2022-03-30', 30),
+(27, 1, '2021-07-20', 35);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `RepasPrévu`
+--
+
+CREATE TABLE `RepasPrévu` (
+  `idRepas` int(10) NOT NULL,
+  `idRecette` int(10) NOT NULL,
+  `jour` int(10) NOT NULL,
+  `momentJournee` time(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `RythmeActivite`
 --
 
@@ -205,55 +258,40 @@ CREATE TABLE `RythmeActivite` (
 --
 
 CREATE TABLE `SuiviRegime` (
-  `id` int(15) NOT NULL,
-  `dateDebut` date NOT NULL,
+  `idRegime` int(15) NOT NULL,
   `ajoutCalorieJournalier` int(10) NOT NULL,
   `masseDebut` int(10) DEFAULT NULL,
   `masseFinRegime` int(10) DEFAULT NULL,
   `taille` int(10) DEFAULT NULL,
-  `periodeRegime` int(10) NOT NULL,
-  `rythmeActivite` int(10) NOT NULL,
-  `idClient` int(10) NOT NULL
+  `rythmeActivite` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `SuiviRegime`
 --
 
-INSERT INTO `SuiviRegime` (`id`, `dateDebut`, `ajoutCalorieJournalier`, `masseDebut`, `masseFinRegime`, `taille`, `periodeRegime`, `rythmeActivite`, `idClient`) VALUES
-(1, '2021-04-11', 331, 59, 76, 180, 50, 1, 14),
-(2, '2021-11-22', 440, 104, 104, 193, 50, 2, 20),
-(3, '2021-12-30', 323, 98, 101, 186, 30, 2, 1),
-(4, '2021-11-06', 462, 114, 109, 183, 10, 3, 39),
-(5, '2021-09-05', 461, 58, 101, NULL, 100, 2, 21),
-(6, '2021-01-08', 444, 72, 119, 176, 100, 3, 33),
-(7, '2021-10-12', 372, 102, 65, 182, 40, 2, 41),
-(8, '2021-01-26', 372, 119, 66, 199, 70, 1, 34),
-(9, '2021-04-04', 305, 55, 118, 208, 60, 3, 18),
-(10, '2021-02-15', 383, 108, 118, 158, 70, 3, 27),
-(12, '2021-05-14', 346, 69, 115, 187, 30, 2, 6),
-(13, '2021-10-31', 478, 83, 74, NULL, 10, 2, 26),
-(14, '2021-10-21', 329, 53, 57, 199, 80, 3, 40),
-(15, '2021-07-13', 350, 66, 64, 170, 80, 1, 38),
-(16, '2021-11-01', 400, 115, 54, 182, 60, 3, 42),
-(17, '2021-05-13', 481, 75, 96, 169, 90, 3, 32),
-(18, '2021-04-23', 360, 99, 85, 190, 60, 1, 11),
-(19, '2021-07-18', 429, 93, 87, 184, 10, 1, 17),
-(20, '2021-01-13', 399, 80, 86, NULL, 100, 1, 46),
-(21, '2021-03-04', 455, 103, 78, 166, 90, 2, 8),
-(22, '2021-01-06', 411, 82, 96, NULL, 20, 1, 23),
-(23, '2021-02-17', 488, 110, 72, 188, 20, 3, 13),
-(25, '2021-08-12', 360, 100, 74, 169, 70, 1, 28),
-(27, '2021-09-29', 373, 90, 53, 166, 40, 2, 3),
-(28, '2021-08-30', 342, 62, 57, 165, 50, 3, 16),
-(30, '2021-06-06', 474, 118, 71, NULL, 40, 3, 9),
-(31, '2021-12-04', 495, 119, 50, 204, 60, 3, 31),
-(33, '2021-11-30', 302, 100, 118, 202, 100, 1, 29),
-(37, '2021-03-22', 492, 95, 102, 191, 80, 1, 5),
-(39, '2021-02-24', 328, 71, 68, 192, 90, 3, 24),
-(40, '2021-03-19', 445, 69, 68, 189, 90, 3, 48),
-(45, '2021-03-22', 452, 89, 52, 199, 30, 2, 2),
-(53, '2022-06-26', 350, 80, NULL, 190, 60, 2, 1);
+INSERT INTO `SuiviRegime` (`idRegime`, `ajoutCalorieJournalier`, `masseDebut`, `masseFinRegime`, `taille`, `rythmeActivite`) VALUES
+(1, 331, 59, 76, 180, 1),
+(2, 440, 104, 104, 193, 2),
+(3, 323, 98, 101, 186, 2),
+(4, 462, 114, 109, 183, 3),
+(5, 461, 58, 101, NULL, 2),
+(6, 444, 72, 119, 176, 3),
+(7, 372, 102, 65, 182, 2),
+(8, 372, 119, 66, 199, 1),
+(9, 305, 55, 118, 208, 3),
+(10, 383, 108, 118, 158, 3),
+(12, 346, 69, 115, 187, 2),
+(13, 478, 83, 74, NULL, 2),
+(14, 329, 53, 57, 199, 3),
+(15, 350, 66, 64, 170, 1),
+(16, 400, 115, 54, 182, 3),
+(17, 481, 75, 96, 169, 3),
+(18, 360, 99, 85, 190, 1),
+(19, 429, 93, 87, 184, 1),
+(20, 399, 80, 86, NULL, 1),
+(26, 300, 80, NULL, 190, 2),
+(27, 300, 80, NULL, 190, 2);
 
 --
 -- Index pour les tables déchargées
@@ -273,12 +311,25 @@ ALTER TABLE `Ingredients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `RegimePersonnalise`
+--
+ALTER TABLE `RegimePersonnalise`
+  ADD PRIMARY KEY (`idRegime`),
+  ADD KEY `idClient` (`idClient`);
+
+--
+-- Index pour la table `RepasPrévu`
+--
+ALTER TABLE `RepasPrévu`
+  ADD PRIMARY KEY (`idRepas`),
+  ADD KEY `idRecette` (`idRecette`);
+
+--
 -- Index pour la table `SuiviRegime`
 --
 ALTER TABLE `SuiviRegime`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `rythmeActivité` (`rythmeActivite`),
-  ADD KEY `id_Client` (`idClient`) USING BTREE;
+  ADD PRIMARY KEY (`idRegime`),
+  ADD KEY `rythmeActivité` (`rythmeActivite`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -291,10 +342,16 @@ ALTER TABLE `Client`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
+-- AUTO_INCREMENT pour la table `RegimePersonnalise`
+--
+ALTER TABLE `RegimePersonnalise`
+  MODIFY `idRegime` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT pour la table `SuiviRegime`
 --
 ALTER TABLE `SuiviRegime`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `idRegime` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
