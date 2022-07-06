@@ -155,7 +155,6 @@ const monitoringRouter=(con)=>{
     
     router.delete("/:idDiet/planning/:idMeal", (req, res) => {   // Récupérer le planning d'un utilisateur pour un régime donné
         if (req.session.user != null)
-
         {
             con.query(
                 `

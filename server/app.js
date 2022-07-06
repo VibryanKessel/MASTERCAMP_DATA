@@ -6,7 +6,7 @@ const mySql = require('mysql');
 // Utils//
 
 const BDD_NAME = "mastercamp";
-const MYSQL_PORT = '8080';
+const MYSQL_PORT = '3306';
 const MYSQL_USER = "root";
 const MYSQL_PASSWORD = "";
 
