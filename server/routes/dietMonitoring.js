@@ -59,6 +59,7 @@ const monitoringRouter=(con)=>{
     });
 
     router.get("/", (req, res) => {  // Cette route sert à récupérer les infos sur le régime personnalisé d'un utilisateur  
+        console.log(req.session.user)
         if (req.session.user != null)
 
         {
