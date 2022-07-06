@@ -54,7 +54,7 @@ export default () => {
             </Stack.Navigator>
         ):
         (
-            <Stack.Navigator screenOptions={{ headerShown: true}}>
+            <Stack.Navigator screenOptions={{ headerShown: false}}>
                 {
                     Tabs.map(
                         (tab,idx) => {

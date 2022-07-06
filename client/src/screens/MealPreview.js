@@ -8,7 +8,6 @@ import MealPrevRigth from "../components/MealPrevRigth";
 
 export default () => {
     return <View>
-        <Navbar tabs = {navbarTabs}></Navbar>
         <View style = { tw`flex flex-row` }>
             <MealPrevLeft></MealPrevLeft>
             <MealPrevRigth></MealPrevRigth>
