@@ -1,7 +1,5 @@
 const express =require('express');
 
-
-
 const registerRouter=(con)=>{
     const router=express.Router();
     /*----------------------------------------------------- */
@@ -25,8 +23,8 @@ const registerRouter=(con)=>{
             else
             {
 
-                con.query("INSERT INTO Client(`nom`, `email`, `motDePasse`, `dateNaissance`) VALUES (?,?,?,?)",[
-                    body.nom,body.email,body.mdp,body.birthDate
+                con.query("INSERT INTO Client(`nom`, `email`, `motDePasse`, `dateNaissance`,`intolerances`) VALUES (?,?,?,?,?)",[
+                    body.nom,body.email,body.mdp,body.birthDate, body.intolerances
                 ], (err, results) => {
                     if (err) throw err;
                     res.status(200).json({
