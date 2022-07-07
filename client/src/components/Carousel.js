@@ -3,11 +3,11 @@ import { Text, View , Image, FlatList, TouchableOpacity} from "react-native"
 import { IconButton } from "react-native-paper"
 import tw from "twrnc"
 
-export default ({ content, onSelect }) => {
+export default ({ content, onSelect, onPressItem }) => {
     const [data,setData] = useState(content)
     
     const numberOfSlidingItems = 3
-
+    
     const range = (start, end) => {
         let tab = [];
         for (let i = start; i < end; i++) {
@@ -54,14 +54,11 @@ export default ({ content, onSelect }) => {
             renderItem = { 
                 ( { item } ) => <TouchableOpacity 
                                     style = { tw`flex flex-col m-2 p-2 rounded bg-slate-100 w-1/3 h-45 overflow-hidden` }
-                                    onPress = { () => onSelect(item.title) }
+                                    onPress = { () => { if( onSelect )onSelect(item.title); if( onPressItem )onPressItem() } }
                                 >
                                         <Text style = { tw`text-center text-xl font-bold` }>{ item.title }</Text>
                                         <Image
-                                            style = {{
-                                                width: 80,
-                                                height: 80,
-                                            }}
+                                            style = {tw`w-full h-full`}
                                             source={{
                                             uri: 'https://img.delicious.com.au/fVd1u6k7/w1200/del/2022/02/chicken-chickpea-curry-163942-1.jpg',
                                             }}

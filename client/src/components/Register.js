@@ -42,6 +42,7 @@ export default () => {
 
     const signUp = async () => {
         const intolerances = inputs.filter(el => el.active).map(el => {return {id : el.id, name : el.text}})
+        // console.log(intolerances.map( el => el.name ).join('+').toString())
         if ( email === "" || lastName === "" || firstName === "" || pwd === "" ){
             setMsg({text : "Veuillez remplir tous les champs !",err : true});
             return ;
@@ -63,7 +64,7 @@ export default () => {
         {
             nom: lastName,
             birthDate: birthDate,
-            intolerances : intolerances, 
+            intolerances : intolerances.map( el => el.name ).join('+').toString(), 
             email: email, 
             mdp: pwd, 
         })

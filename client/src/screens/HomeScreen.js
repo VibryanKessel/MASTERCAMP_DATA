@@ -110,7 +110,10 @@ export default () => {
             </View>
             {
                 (showTrendy) ?
-                    <Carousel content={trendyMeals} /> :
+                    <Carousel
+                        content={trendyMeals} 
+                        onPressItem = { () => setModalVisible(true)}
+                    /> :
                     <Recommandations 
                         content={recommandationsList} 
                         onPressItem = { () => setModalVisible(true)}
@@ -118,7 +121,7 @@ export default () => {
             }
         </View>
         <Footer />
-            <Modal animationType="slide"
+            <Modal animationType="fade"
                 transparent={true}
                 visible={modalVisible}
             >

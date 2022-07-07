@@ -45,7 +45,7 @@ export default () => {
                         ( { item } ) => <TouchableOpacity
                                             style = { tw`my-3 mx-1 h-80 flex flex-row rounded border-solid border-2 border-orange-500` }
                                             onPress = { () =>{ 
-                                                                setDetailsVisibility(true)
+                                                                setDetailsVisibility(false)
                                                                 // setDietId(item.idRegime)
                                                             }    
                                                     }
@@ -54,11 +54,11 @@ export default () => {
                                                 <Image style = {{height : '100%',width : '100%'}} source = { require('../../assets/logo.jpeg') }/>
                                             </View>
                                             <View style = {tw`h-full flex flex-col w-3/4`}>
-                                                <Text style = {tw`uppercase font-bold px-20 py-2 h-5/6 w-full`}>Regime numero : {item.idRegime}</Text>
+                                                <Text style = {tw`uppercase font-bold px-20 py-2 h-1/2 w-full`}>Regime numero : {item.idRegime}</Text>
                                                 <View
                                                     style = { tw`flex flex-row h-1/6` }
                                                 >
-                                                    <Text style = {tw`uppercase font-bold px-20 py-2 w-1/2`}>Ajout calorique ournalier : {item.ajoutCalorieJournalier}</Text>
+                                                    <Text style = {tw`uppercase font-bold px-20 py-2 w-1/2`}>Ajout calorique journalier : {item.ajoutCalorieJournalier}</Text>
                                                     <Text style = {tw`uppercase font-bold px-20 py-2 w-1/2`}>Rythme d'activité : {item.rythmeActivite}</Text>
                                                 </View>
                                             
@@ -68,7 +68,7 @@ export default () => {
                 />
                 {
                     (detailsHidden)?<></>:
-                    <DietDetails style={ tw`w-2/5 border-orange-500` }/>
+                    <DietDetails style={ tw`w-1/5 border-orange-500` }/>
                 }
             </View>
         </View>    
