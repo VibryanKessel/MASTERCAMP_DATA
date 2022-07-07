@@ -1,5 +1,5 @@
 import { Picker } from "@react-native-picker/picker";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ImageBackground, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { Button, IconButton, TextInput } from "react-native-paper";
 import tw from "twrnc";
@@ -7,7 +7,6 @@ import axios from "axios";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Recommandations from "../components/Recommandations";
-import recommandations from "../datas/recommandations";
 import Navbar from "../components/Navbar";
 import navbarTabs from "../datas/navbarTabs";
 import categories from "../datas/categories";
@@ -19,7 +18,7 @@ import MealPreview from "./MealPreview";
 export default () => {
     const [selectedCategory, setCategory] = useState("Trendy");
     const [showTrendy, setTrendyVisibility] = useState(true)
-    const [recommandationsList, setRecommandationsList] = useState(recommandations)
+    const [recommandationsList, setRecommandationsList] = useState(null)
     const [searchText, setSearchText] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
     const [mealId, setMealId] = useState("");
@@ -27,6 +26,16 @@ export default () => {
     const bgImage = require("../../assets/logo.jpeg")
 
 
+    useEffect(() => {
+        async function getRecommandations() {
+            if (recommandationsList == null) {
+                const res = await axios.get(`http://localhost:5000/recommandation`);
+                setRecommandationsList(res.data);
+            }
+        }
+        getRecommandations();
+    }, [recommandationsList])
+    console.log(recommandationsList?.length);
     return <View
         style = {tw`h-full`}
             >

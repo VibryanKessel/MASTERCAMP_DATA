@@ -3,7 +3,6 @@ const axios = require("axios");
 const asyncHandler = require('express-async-handler')
 const { getRecipesFromApiBaseOnIngredients, getRecipesFromApiBaseOnNutrients } = require('../utils/api_functions');
 
-const baseUrl = "https://api.spoonacular.com/recipes"
 
 const loginRouter = (con) => {
     const router = express.Router();
@@ -19,7 +18,7 @@ const loginRouter = (con) => {
             res.status(200).json(recipes);
         } catch (error) {
 
-            res.status(500).json({"message": "Internal server error"})
+            res.status(500).json({"message": "Internal server error"})  
             throw error;
         }
     }));

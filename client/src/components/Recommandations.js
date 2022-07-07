@@ -8,6 +8,7 @@ function reduceStringLen( str ){
 
 export default ( {content, onPressItem} ) => {
     
+
     return (
         <FlatList 
             numColumns={10}
