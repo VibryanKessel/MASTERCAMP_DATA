@@ -22,6 +22,7 @@ export default () => {
     const [recommandationsList, setRecommandationsList] = useState(recommandations)
     const [searchText, setSearchText] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
+    const [mealId, setMealId] = useState("");
 
     const bgImage = require("../../assets/logo.jpeg")
 
@@ -116,7 +117,10 @@ export default () => {
                     /> :
                     <Recommandations 
                         content={recommandationsList} 
-                        onPressItem = { () => setModalVisible(true)}
+                        onPressItem = { (id) => {
+                            setMealId(id);
+                            setModalVisible(true)
+                        }}
                     />
             }
         </View>
@@ -125,7 +129,7 @@ export default () => {
                 transparent={true}
                 visible={modalVisible}
             >
-                    <MealPreview>
+                    <MealPreview id = {mealId}>
                         <IconButton
                         style = { tw`self-end` }
                         icon = "close-circle"

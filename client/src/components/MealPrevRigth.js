@@ -2,13 +2,12 @@ import { Feather } from "@expo/vector-icons";
 import { View, Text, Image, TouchableOpacity } from "react-native"
 
 import tw from 'twrnc';
-import previewMeal from "../datas/previewMeal";
 
-export default (props) => {
+export default ({mealInfos}) => {
     return <View style={{ ...tw`w-2/3 mx-7 p-5` }}>
         <View >
             <Text style={tw`font-bold text-2xl`} > Description </Text>
-            <Text style={{ ...tw``, fontSize: 15 }} > {previewMeal["summary"]} </Text>
+            <Text style={{ ...tw``, fontSize: 15 }} > {mealInfos["summary"]} </Text>
         </View>
         <View>
 

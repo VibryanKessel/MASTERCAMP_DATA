@@ -18,7 +18,7 @@ export default ( {content, onPressItem} ) => {
                 ( { item } ) => <TouchableOpacity style = { tw`flex flex-col w-1/9` }
                                     onPress = {
                                         () => {
-                                            onPressItem()
+                                            onPressItem(item.id);
                                         }
                                     }
                                 >

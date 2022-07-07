@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { View } from "react-native"
-import Chart from 'react-native-chartjs'
+/* import Chart from 'react-native-chartjs'*/
 import tw from "twrnc";
 
 export default ({style}) => {
