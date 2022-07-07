@@ -66,10 +66,10 @@ export default () => {
                                         </TouchableOpacity>
                     }
                 />
-                {/* { */}
-                    {/* (detailsHidden)?<></>: */}
+                {
+                    (detailsHidden)?<></>:
                     <DietDetails style={ tw`w-2/5 border-orange-500` }/>
-                {/* // } */}
+                }
             </View>
         </View>    
     )

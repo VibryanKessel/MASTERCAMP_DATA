@@ -6,9 +6,8 @@ function reduceStringLen( str ){
     return (str.length <= 25)? str : str.slice(0,21)+'...'
 }
 
-export default ( {content} ) => {
-    const navigation = useNavigation();
-
+export default ( {content, onPressItem} ) => {
+    
     return (
         <FlatList 
             numColumns={10}
@@ -19,7 +18,7 @@ export default ( {content} ) => {
                 ( { item } ) => <TouchableOpacity style = { tw`flex flex-col w-1/9` }
                                     onPress = {
                                         () => {
-                                            navigation.navigate("MealPreview");
+                                            onPressItem()
                                         }
                                     }
                                 >

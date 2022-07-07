@@ -1,7 +1,7 @@
 import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
 import { ImageBackground, Modal, ScrollView, Text, TouchableOpacity, View } from "react-native"
-import { Button, TextInput } from "react-native-paper";
+import { Button, IconButton, TextInput } from "react-native-paper";
 import tw from "twrnc";
 import axios from "axios";
 import Carousel from "../components/Carousel";
@@ -21,11 +21,14 @@ export default () => {
     const [showTrendy, setTrendyVisibility] = useState(true)
     const [recommandationsList, setRecommandationsList] = useState(recommandations)
     const [searchText, setSearchText] = useState('')
+    const [modalVisible, setModalVisible] = useState(false);
 
     const bgImage = require("../../assets/logo.jpeg")
 
 
-    return <View>
+    return <View
+        style = {tw`h-full`}
+            >
         <ImageBackground source={bgImage} resizeMode="cover" style={{ ...tw`flex-1 rotate-45 justify-center h-70 w-30 absolute left-0 top-80` }} />
         <View style={tw`bg-orange-500 flex-1 h-25 w-25 rounded-lg absolute rotate-45 bottom-70 right-0`}></View>
         <View style={{ ...tw`bg-orange-500/90 rounded-full absolute right-20 top-50`, width: 100, height: 100 }}></View>
@@ -108,17 +111,24 @@ export default () => {
             {
                 (showTrendy) ?
                     <Carousel content={trendyMeals} /> :
-                    <Recommandations content={recommandationsList} />
+                    <Recommandations 
+                        content={recommandationsList} 
+                        onPressItem = { () => setModalVisible(true)}
+                    />
             }
         </View>
         <Footer />
-        <Modal animationType="slide"
-            transparent={true}
-            visible={true}
-            onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-            }}>
-            <MealPreview></MealPreview>
-        </Modal>
+            <Modal animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+            >
+                    <MealPreview>
+                        <IconButton
+                        style = { tw`self-end` }
+                        icon = "close-circle"
+                        onPress={ () => setModalVisible(false) }
+                        />
+                    </MealPreview>
+            </Modal>
     </View>
 }
