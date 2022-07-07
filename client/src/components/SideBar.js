@@ -11,7 +11,7 @@ export default ({ style }) => {
                     style = { tw`flex flex-row self-center h-1/5 pl-5 py-10 w-full border-b-2 border-gray-300` }
                 >
                     <Text
-                        style = { tw`text-xl self-center font-bold w-9/10` }
+                        style = { tw` self-center font-bold w-8/10` }
                     >
                         Current diet
                     </Text>
@@ -21,7 +21,7 @@ export default ({ style }) => {
                     style = { tw`flex flex-row self-center h-2/5 pl-5 py-10 w-full border-b-2 border-t-2 border-gray-300` }
                 >
                     <Text
-                        style = { tw`text-xl self-center font-bold w-9/10` }
+                        style = { tw` self-center font-bold w-8/10` }
                     >
                         Past diets
                     </Text>

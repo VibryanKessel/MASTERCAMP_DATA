@@ -9,7 +9,7 @@ export default ( {content} ) => {
     return (
         <FlatList 
             numColumns={10}
-            style = { tw`grid grid-cols-4 gap-4 h-70` }
+            style = { tw`h-70` }
             keyExtractor = { (item) => item.id }
             data = { content }
             renderItem = { 

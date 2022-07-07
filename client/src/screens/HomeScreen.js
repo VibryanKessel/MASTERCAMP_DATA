@@ -13,6 +13,7 @@ import navbarTabs from "../datas/navbarTabs";
 import categories from "../datas/categories";
 import topCategories from "../datas/topCategories";
 import trendyMeals from "../datas/trendyMeals";
+import { Feather } from "@expo/vector-icons";
 
 export default () => {
     const [selectedCategory, setCategory] = useState("Trendy");
@@ -76,10 +77,11 @@ export default () => {
                                                     setTrendyVisibility( text === "" )
                                                     setRecommandationsList(recommandations.filter( el => el.title.includes(text))) 
                                                 }           
-                                    }
+                                            }
                         style={tw`h-7 text-center w-full`}
                         placeholder="Que recherchez-vous ?"
                     />
+                    <Feather name="search" size={24} style={tw`pl-3 self-center text-orange-500`}/>
                 </View>
             </View>
             <View style={tw`border-b-2 my-3`}>

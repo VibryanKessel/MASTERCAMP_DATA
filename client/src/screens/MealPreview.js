@@ -1,10 +1,10 @@
-import { View, Text, View } from "react-native"
+import { View, Text } from "react-native"
 
 import Navbar from "../components/Navbar"
 
 export default (props) => {
     return <View>
-        <Navbar></Navbar>
+        <Navbar/>
         <Text> Meal Preview </Text>
     </View>
 }
