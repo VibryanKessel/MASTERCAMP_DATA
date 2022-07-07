@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { FlatList, Image, Text, TouchableOpacity } from "react-native"
 import tw from "twrnc"
 
@@ -6,6 +7,8 @@ function reduceStringLen( str ){
 }
 
 export default ( {content} ) => {
+    const navigation = useNavigation();
+
     return (
         <FlatList 
             numColumns={10}
@@ -16,7 +19,7 @@ export default ( {content} ) => {
                 ( { item } ) => <TouchableOpacity style = { tw`flex flex-col w-1/9` }
                                     onPress = {
                                         () => {
-                                            
+                                            navigation.navigate("MealPreview");
                                         }
                                     }
                                 >
