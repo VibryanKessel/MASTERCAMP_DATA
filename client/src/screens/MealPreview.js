@@ -26,7 +26,6 @@ export default ({ children, id }) => {
         getMealInfos();
     }, [mealInfos])
 
-    console.log(mealInfos);
 
     return (
         <View style={tw`h-full bg-black/50`}>

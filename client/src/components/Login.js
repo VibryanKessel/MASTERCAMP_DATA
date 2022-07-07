@@ -27,7 +27,7 @@ export default () => {
                 if(response.status === 200){
                     setMsg({text : "Vous etes connecté(e)",err :false})
                     setTimeout(
-                        dispatch( {type:"LOGIN",user:user} ),5000            
+                        dispatch( {type:"LOGIN",user:{...response.data}} ),5000            
                     )
                 }else{
                     setMsg({text :"User introuvable !",err : true})

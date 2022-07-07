@@ -1,6 +1,6 @@
-const express =require('express');
-const loginRouter=(con)=>{
-    const router=express.Router();
+const express = require('express');
+const loginRouter = (con) => {
+    const router = express.Router();
     /*----------------------------------------------------- */
 
     router.post("/", async (req, res) => {
@@ -8,29 +8,27 @@ const loginRouter=(con)=>{
 
         console.log(body)
 
-        con.query("SELECT * FROM Client WHERE email = ? AND motDePasse = ?",[
+        con.query("SELECT * FROM Client WHERE email = ? AND motDePasse = ?", [
             body.email,
             body.mdp
         ], (err, results) => {
-            if(err) {
-                res.status(500).json({"message":"Internal server error"});
+            if (err) {
+                res.status(500).json({ "message": "Internal server error" });
                 throw err;
             };
-            
+
             if (results.length == 0)
                 res.status(404).json({
                     "message": " Vérifiez vos identifiants et rééssayez !!"
-                });   
-            else
-            {
-                req.session.user = {...results[0]};
-                res.status(200).json({
-                    "message": "Authentification réussie"
                 });
+            else {
+                delete results[0]["motDePasse"];
+                req.session.user = { ...results[0] };
+                res.status(200).json(results[0]);
             }
         });
-        
-        return ;
+
+        return;
     });
     router.get("/who", (req, res) => {
         if (req.session.user != null)
@@ -40,9 +38,9 @@ const loginRouter=(con)=>{
         return;
     })
 
-    
+
     /*---------------------------------------------------------- */
     return router;
 }
 
-module.exports=loginRouter;
+module.exports = loginRouter;
