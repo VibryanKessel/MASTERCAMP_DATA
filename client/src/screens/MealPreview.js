@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
-import { View, Text } from "react-native"
+import { View, Text, ScrollView } from "react-native"
 
 import tw from 'twrnc';
 import MealPrevLeft from "../components/MealPrevLeft";
@@ -28,8 +28,8 @@ export default ({ children, id }) => {
 
 
     return (
-        <View style={tw`h-full bg-black/50`}>
-            <View style={tw`flex flex-col bg-gray-300 h-8/10`}>
+        <ScrollView style={tw`h-full bg-black/50`}>
+            <View style={tw`flex flex-col bg-gray-300 h-150`}>
                 {Children.map(child => child)}
                 {
                     (mealInfos != null) ? (
@@ -40,6 +40,6 @@ export default ({ children, id }) => {
                     ):(<></>)
                 }
             </View>
-        </View>
+        </ScrollView>
     )
 }
