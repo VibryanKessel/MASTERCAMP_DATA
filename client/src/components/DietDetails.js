@@ -48,7 +48,7 @@ export default ({style}) => {
         <View
             style = { {...tw`flex flex-col h-full border-l-2 ml-3 p-5`,...style} }
         >
-            {/* <Chart chartConfiguration = { chartConfig } defaultFontSize={20}/> */}
+        {/*<Chart chartConfiguration = { chartConfig } defaultFontSize={20}/>*/}
         </View>
     )
 }
