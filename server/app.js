@@ -6,7 +6,7 @@ const mySql = require('mysql');
 // Utils//
 
 const BDD_NAME = "mastercamp";
-const MYSQL_PORT = '8080';
+const MYSQL_PORT = '3306';
 const MYSQL_USER = "root";
 const MYSQL_PASSWORD = "";
 
@@ -18,6 +18,7 @@ const clientRouter=require('./routes/client');
 const registerRouter=require('./routes/register');
 const monitoringRouter=require('./routes/dietMonitoring');
 const recommandationRouter=require('./routes/recommandation');
+const mealRouter=require('./routes/meal');
 
 // Création serveur //
 const app=express();
@@ -51,6 +52,7 @@ app.use('/register',registerRouter(con));
 app.use('/diet',monitoringRouter(con));
 app.use('/recommandation',recommandationRouter(con));
 app.use('/client',clientRouter(con));
+app.use('/meal',mealRouter(con));
 
 app.get('/deconnexion',(req,res)=>{
     console.log(`${req.session.user.nom} vient de se deconnecter`);
