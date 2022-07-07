@@ -1,6 +1,7 @@
 import axios from "axios"
-import { useState } from "react"
+import { useState, useEffect} from "react"
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native"
+import { useSelector } from "react-redux"
 import tw from "twrnc"
 import DietDetails from "../components/DietDetails"
 import Navbar from "../components/Navbar"
@@ -11,22 +12,19 @@ import navbarTabs from "../datas/navbarTabs"
 export default () => {
     const [detailsHidden,setDetailsVisibility] = useState(true)
     const [dietId,setDietId] = useState()
-    const diets = [
-		{
-			"idRegime": 17,
-			"dateDebut": "2022-03-08T23:00:00.000Z",
-			"periodeRegime": 30,
-			"ajoutCalorieJournalier": 481,
-			"rythmeActivite": 3
-		},
-		{
-			"idRegime": 27,
-			"dateDebut": "2021-07-19T22:00:00.000Z",
-			"periodeRegime": 35,
-			"ajoutCalorieJournalier": 300,
-			"rythmeActivite": 2
-		}
-	]
+    const [diets, setDiets] = useState(null);
+    const session = useSelector( state => state.session )
+    useEffect(() => {
+        async function getDiets() {
+            if (diets == null) {
+                const res = await axios.get(`http://localhost:5000/diet/${session.id}`);
+                setDiets(res.data["results"]);
+            }
+        }
+        getDiets();
+    }, [diets]);
+
+    console.log(diets);
     return (
         <View style = { tw`h-full overflow-hidden` }>
             <Navbar tabs= { navbarTabs }/>
