@@ -12,8 +12,8 @@ export default ({children}) => {
     const Children = React.Children.toArray(children)
     
     return (
-        <View style = { tw`h-full bg-black/50` }>
-            <View style = { tw`flex flex-col bg-gray-300 h-1/2` }>
+        <View style = { tw`h-full bg-black/50 ` }>
+            <View style = { tw`flex flex-col bg-gray-300 h-100` }>
                 {Children.map( child => child)}
                 <View style = { tw`flex flex-row bg-gray-300 h-full` }>
                     <MealPrevLeft></MealPrevLeft>
