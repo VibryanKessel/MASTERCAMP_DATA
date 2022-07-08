@@ -2,9 +2,8 @@
 const express = require('express');
 const axios = require("axios");
 const asyncHandler = require('express-async-handler');
-const apikey = "29cb37909ef84b8d867a0350baee367d";
 const Mealkeys = ["id","title","image","readyInMinutes","pricePerServing","sourceUrl","dishTypes","extendedIngredients","summary","instructions","analyzedInstructions"];
-const mealRouter = (con) => {
+const mealRouter = (con,apikey) => {
     const router = express.Router();
 
     /*----------------------------------------------------- */

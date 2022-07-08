@@ -3,7 +3,7 @@ const axios = require("axios");
 const { getIngredients, categorizeIngredients, combine } = require('../utils/dataProcessing');
 const baseUrl = "https://api.spoonacular.com/recipes"
 
-function getRecipesFromApiBaseOnIngredients(con) {
+function getRecipesFromApiBaseOnIngredients(con,apikey) {
     return new Promise(async (resolve, reject) => {
 
         let ingredients = await getIngredients(con);
@@ -21,7 +21,7 @@ function getRecipesFromApiBaseOnIngredients(con) {
             let response = await axios.get(l, {
                 params: {
                     "ingredients": combinaisons_ingredients[i],
-                    "apiKey": "072e3ed9ce4f43cc81301c93d473bf38",
+                    "apiKey": apikey,
                     "number": 10
                 }
             });

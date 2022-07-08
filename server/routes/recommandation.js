@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 const { getRecipesFromApiBaseOnIngredients, getRecipesFromApiBaseOnNutrients } = require('../utils/api_functions');
 
 
-const loginRouter = (con) => {
+const loginRouter = (con,apikey) => {
     const router = express.Router();
 
     /*----------------------------------------------------- */
@@ -13,7 +13,7 @@ const loginRouter = (con) => {
 
         try {
             
-            const recipes = await getRecipesFromApiBaseOnIngredients(con);
+            const recipes = await getRecipesFromApiBaseOnIngredients(con,apikey);
             console.log(recipes.length);
             res.status(200).json(recipes);
         } catch (error) {
