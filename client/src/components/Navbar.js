@@ -9,12 +9,12 @@ export default ({ tabs }) => {
     const logOut = () => dispatch({ type:"LOGOUT"})
     const navigation = useNavigation();
     const user = useSelector( state => state.session)
-
+    
     return (
         <View style = { tw`flex flex-row w-full p-5 border-b-2 border-gray-300` }>
             <View style = { tw`flex flex-row w-1/2` }>
                 <Feather name = "user" size = { 40 } style = { tw`self-center text-orange-500 mr-2` }/>
-                <Text style = { tw`self-center font-bold` }>{ user.email }</Text>
+                <Text style = { tw`self-center font-bold` }>{ user.nom }</Text>
             </View>
             {
                 tabs.map(
