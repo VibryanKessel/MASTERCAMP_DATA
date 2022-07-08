@@ -22,19 +22,23 @@ export default () => {
             setMsg({text : "Veuillez remplir tous les champs !",err : true});
         }else{
                 const user = {email: email, mdp: pwd}
-                const response = await axios.post("http://localhost:5000/login", // On contacte le serveur qui tourne sur le port 5000 pour le login
-                user)
-                if(response.status === 200){
-                    setMsg({text : "Vous etes connecté(e)",err :false})
-                    setTimeout(
-                        dispatch( {type:"LOGIN",user:{...response.data}} ),5000            
-                    )
-                }else{
+                try {
+                    const response = await axios.post("http://localhost:5000/login", // On contacte le serveur qui tourne sur le port 5000 pour le login
+                    user)
+                    if(response.status === 200){
+                        setMsg({text : "Vous etes connecté(e)",err :false})
+                        setTimeout(
+                            dispatch( {type:"LOGIN",user:{...response.data}} ),5000            
+                        )
+                    }else{
+                        setMsg({text :"User introuvable !",err : true})
+                    }   
+                }catch (error) {
+                    console.log('a')
                     setMsg({text :"User introuvable !",err : true})
                 }
         }
-    }
-    
+    }            
     return( 
     <View style = {tw`flex flex-row m-0 h-full w-full`}>
         <View style = {tw`h-full w-2/3 px-10 py-40`}>
@@ -84,7 +88,7 @@ export default () => {
                         </Text>
                     </TouchableOpacity>
                                 <Text
-                                style = { (msg.err)? {color : 'red'}:{color : 'green'}}
+                                style = { {...tw`text-xl font-black`,...(msg.err)? {color : 'red'}:{color : 'green'} } }
                                 >
                                     {msg.text}
                                 </Text>
