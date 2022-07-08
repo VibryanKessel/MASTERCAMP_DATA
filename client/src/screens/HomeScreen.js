@@ -89,7 +89,7 @@ export default () => {
                         onChangeText={text => {
                             setSearchText(text)
                             setTrendyVisibility(text === "")
-                            setRecommandationsList(recommandations.filter(el => el.title.includes(text)))
+                            setRecommandationsList(recommandationsList.filter(el => el.title.includes(text)))
                         }
                         }
                         style={tw`h-7 text-center w-full`}
@@ -122,7 +122,10 @@ export default () => {
                 (showTrendy) ?
                     <Carousel
                         content={trendyMeals} 
-                        onPressItem = { () => setModalVisible(true)}
+                        onPressItem = { (id) => {
+                            setMealId(id);
+                            setModalVisible(true)
+                        }}
                     /> :
                     <Recommandations 
                         content={recommandationsList} 
@@ -130,6 +133,7 @@ export default () => {
                             setMealId(id);
                             setModalVisible(true)
                         }}
+                    
                     />
             }
         </View>

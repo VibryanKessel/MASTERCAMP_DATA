@@ -56,7 +56,7 @@ export default ({ content, onSelect, onPressItem }) => {
             renderItem = { 
                 ( { item } ) => <TouchableOpacity 
                                     style = { tw`flex flex-col m-2 p-2 rounded bg-slate-100 w-1/3 h-45 overflow-hidden` }
-                                    onPress = { () => { if( onSelect )onSelect(item.title); if( onPressItem )onPressItem() } }
+                                    onPress = { () => { if( onSelect )onSelect(item.title); if( onPressItem )onPressItem(item.id) } }
                                 >
                                         <Text style = { tw`text-center text-xl font-bold` }>{ reduceStringLen(item.title) }</Text>
                                         <Image
