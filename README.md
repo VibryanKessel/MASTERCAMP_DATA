@@ -53,5 +53,8 @@ Pour le login vous pourrez utiliser les ids : (email:`a@gmail.com`, motdepasse: 
   - Certaines installations peuvent échouer parce que vous n'êtes pas passer en mode superutilisateur 
   - (Bugs probables) Nous avons tous utiliser des systèmes d'exploitations UBUNTU pour le développement. Nous n'avons pas fait de tests sur des systèmes WINDOWS. Il est donc possible que certains bugs surviennent.
   - L'Api utilisée dans notre modèle pose une certaine limite au nombre de requêtes exécutables par jour. Il est donc fort probable que la limite soit atteinte et que l'application ne marche plus
-
+    Nous avonc néanmoins assez de clés pour faire des tests
+     -"29cb37909ef84b8d867a0350baee367d"
+     - "6493965b8d7e4178af4eb51e84f4a544"
+     - "072e3ed9ce4f43cc81301c93d473bf38"
 

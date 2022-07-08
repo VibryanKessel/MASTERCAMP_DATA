@@ -21,7 +21,7 @@ function getRecipesFromApiBaseOnIngredients(con) {
             let response = await axios.get(l, {
                 params: {
                     "ingredients": combinaisons_ingredients[i],
-                    "apiKey": "29cb37909ef84b8d867a0350baee367d",
+                    "apiKey": "072e3ed9ce4f43cc81301c93d473bf38",
                     "number": 10
                 }
             });
