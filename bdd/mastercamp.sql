@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 06 juil. 2022 à 17:21
+-- Généré le : ven. 08 juil. 2022 à 15:00
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -35,7 +35,7 @@ CREATE TABLE `Client` (
   `dateNaissance` date NOT NULL,
   `taille` int(10) DEFAULT NULL,
   `sex` tinyint(1) DEFAULT NULL,
-  `intolerances` varchar(60) DEFAULT NULL,
+  `intolerances` varchar(100) DEFAULT NULL,
   `masse` int(10) DEFAULT NULL,
   `rythmeActivite` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
